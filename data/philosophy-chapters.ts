@@ -190,4 +190,5 @@ export const philosophySections = {
 } as const
 
 export type BlogId = keyof typeof philosophyBlogs
+export type ChapterId = keyof typeof philosophyBlogs
 export type SectionId = keyof typeof philosophySections
