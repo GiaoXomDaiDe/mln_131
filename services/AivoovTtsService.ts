@@ -1,4 +1,14 @@
 import axios from 'axios';
+import { convertBlogToSpeech } from '@/lib/markdown-to-speech';
+
+// ========================================
+// 🎛️ CONFIGURATION - Easy to modify for testing
+// ========================================
+const AIVOOV_API_URL = 'https://aivoov.com/api/v8/create';
+const AIVOOV_API_KEY = '387fce2f-33cc-4711-bc20-03335be3d710';
+const AIVOOV_VOICE_ID = 'f2f08621-cc68-40b8-a19f-1ca21d530893';
+const TTS_WORD_LIMIT = 50; // Maximum words to send to TTS service
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
 interface AivoovTtsResponse {
   status: boolean;
@@ -10,16 +20,12 @@ interface CachedAudio {
   url: string;
   blogId: string;
   createdAt: number;
-  audio?: HTMLAudioElement;
+  // No longer caching the audio element - only the URL to avoid state conflicts
 }
 
 class AivoovTtsService {
   private static instance: AivoovTtsService;
   private cache: Map<string, CachedAudio> = new Map();
-  private readonly API_URL = 'https://aivoov.com/api/v8/create';
-  private readonly API_KEY = '6189ac7e-c3c0-46a5-bcc2-187ff214982e';
-  private readonly VOICE_ID = 'f2f08621-cc68-40b8-a19f-1ca21d530893';
-  private readonly CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
   private constructor() {}
 
@@ -30,31 +36,37 @@ class AivoovTtsService {
     return AivoovTtsService.instance;
   }
 
-  private getCacheKey(blogId: string, voiceId: string = this.VOICE_ID): string {
+  private getCacheKey(blogId: string, voiceId: string = AIVOOV_VOICE_ID): string {
     return `${blogId}_${voiceId}`;
   }
 
   private isCacheValid(cachedAudio: CachedAudio): boolean {
     const now = Date.now();
-    return now - cachedAudio.createdAt < this.CACHE_DURATION;
+    return now - cachedAudio.createdAt < CACHE_DURATION;
   }
 
   private processTextForTts(text: string): string {
     console.log('[Aivoov TTS] Processing text for speech synthesis...');
-    console.log('[Aivoov TTS] Original text length:', text.length);
+    console.log('[Aivoov TTS] Original markdown text length:', text.length);
     
-    // Split into words and count up to 150 words
-    const words = text.trim().split(/\s+/);
-    console.log('[Aivoov TTS] Total words in original text:', words.length);
+    // Step 1: Convert markdown to speech-friendly text
+    const speechText = convertBlogToSpeech(text);
+    console.log('[Aivoov TTS] After markdown conversion:', speechText.length, 'chars');
+    console.log('[Aivoov TTS] Converted text sample:', speechText.substring(0, 150) + '...');
+    console.log('[Aivoov TTS] Using word limit:', TTS_WORD_LIMIT);
     
-    // Take only first 150 words but keep original formatting and punctuation
-    const limitedWords = words.slice(0, 150);
+    // Step 2: Split into words and limit to configured word limit
+    const words = speechText.trim().split(/\s+/);
+    console.log('[Aivoov TTS] Total words after conversion:', words.length);
+    
+    // Take only first N words but keep all punctuation for natural pauses
+    const limitedWords = words.slice(0, TTS_WORD_LIMIT);
     const result = limitedWords.join(' ');
     
     console.log('[Aivoov TTS] Words taken:', limitedWords.length);
     console.log('[Aivoov TTS] Final text length:', result.length);
     console.log('[Aivoov TTS] Final text (first 100 chars):', result.substring(0, 100) + '...');
-    console.log('[Aivoov TTS] Text kept all punctuation for proper voice pausing');
+    console.log('[Aivoov TTS] Text processed with proper pauses for headings and lists');
     
     return result.trim();
   }
@@ -72,20 +84,29 @@ class AivoovTtsService {
   public async generateSpeech(
     text: string, 
     blogId: string, 
-    voiceId: string = this.VOICE_ID
+    voiceId: string = AIVOOV_VOICE_ID
   ): Promise<HTMLAudioElement> {
     const cacheKey = this.getCacheKey(blogId, voiceId);
     console.log('[Aivoov TTS] Cache key:', cacheKey);
     
-    // Check if we have valid cached audio
+    // Check if we have valid cached audio URL
     if (this.cache.has(cacheKey)) {
-      console.log('[Aivoov TTS] Found cached audio for this blog');
+      console.log('[Aivoov TTS] Found cached audio URL for this blog');
       const cachedAudio = this.cache.get(cacheKey)!;
-      if (this.isCacheValid(cachedAudio) && cachedAudio.audio) {
-        console.log('[Aivoov TTS] Using valid cached audio - no API call needed');
-        return cachedAudio.audio;
+      if (this.isCacheValid(cachedAudio) && cachedAudio.url) {
+        console.log('[Aivoov TTS] Using valid cached audio URL - no API call needed');
+        console.log('[Aivoov TTS] Creating fresh audio element from cached URL:', cachedAudio.url);
+        
+        // Create a fresh audio element from cached URL to avoid state conflicts
+        const audio = new Audio(cachedAudio.url);
+        console.log('[Aivoov TTS] Fresh audio element created from cache');
+        return audio;
       } else {
         console.log('[Aivoov TTS] Cache expired or invalid, removing from cache');
+        // Clean up the blob URL before removing from cache
+        if (cachedAudio.url) {
+          URL.revokeObjectURL(cachedAudio.url);
+        }
         this.cache.delete(cacheKey);
       }
     } else {
@@ -97,8 +118,8 @@ class AivoovTtsService {
       const processedText = this.processTextForTts(text);
       
       console.log('[Aivoov TTS] ===== MAKING AIVOOV API REQUEST =====');
-      console.log('[Aivoov TTS] URL:', this.API_URL);
-      console.log('[Aivoov TTS] API Key:', this.API_KEY);
+      console.log('[Aivoov TTS] URL:', AIVOOV_API_URL);
+      console.log('[Aivoov TTS] API Key:', AIVOOV_API_KEY);
       console.log('[Aivoov TTS] Voice ID:', voiceId);
       console.log('[Aivoov TTS] Processed text:', processedText);
       
@@ -115,9 +136,9 @@ class AivoovTtsService {
       
       const response = await axios({
         method: 'POST',
-        url: this.API_URL,
+        url: AIVOOV_API_URL,
         headers: {
-          'X-API-KEY': this.API_KEY,
+          'X-API-KEY': AIVOOV_API_KEY,
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         data: formData,
@@ -157,17 +178,17 @@ class AivoovTtsService {
       console.log('[Aivoov TTS] Audio element created with object URL');
       console.log('[Aivoov TTS] Audio element ready for playback');
       
-      // Cache the audio
+      // Cache only the URL, not the audio element to avoid state conflicts
       const cachedAudio: CachedAudio = {
         url: audioUrl,
         blogId,
         createdAt: Date.now(),
-        audio,
       };
       
       this.cache.set(cacheKey, cachedAudio);
-      console.log('[Aivoov TTS] Audio cached successfully with key:', cacheKey);
+      console.log('[Aivoov TTS] Audio URL cached successfully with key:', cacheKey);
       console.log('[Aivoov TTS] Cache now contains', this.cache.size, 'items');
+      console.log('[Aivoov TTS] Note: Only URL cached, fresh audio elements created each time');
       
       return audio;
     } catch (error) {
@@ -194,12 +215,23 @@ class AivoovTtsService {
   }
 
   public clearCache(): void {
+    // Clean up all blob URLs before clearing cache
+    for (const cachedAudio of this.cache.values()) {
+      if (cachedAudio.url) {
+        URL.revokeObjectURL(cachedAudio.url);
+      }
+    }
     this.cache.clear();
+    console.log('[Aivoov TTS] Cache cleared and all blob URLs revoked');
   }
 
   public removeBlogFromCache(blogId: string): void {
     for (const [key, cachedAudio] of this.cache.entries()) {
       if (cachedAudio.blogId === blogId) {
+        // Clean up blob URL before removing
+        if (cachedAudio.url) {
+          URL.revokeObjectURL(cachedAudio.url);
+        }
         this.cache.delete(key);
       }
     }
@@ -210,6 +242,28 @@ class AivoovTtsService {
       size: this.cache.size,
       keys: Array.from(this.cache.keys()),
     };
+  }
+
+  /**
+   * Test markdown to speech conversion with sample text
+   */
+  public testMarkdownConversion(): void {
+    const sampleMarkdown = `# Cạnh tranh trong nền kinh tế thị trường
+
+## 1. Cạnh tranh trong nội bộ ngành
+
+### Khái niệm
+Là cạnh tranh giữa các doanh nghiệp trong cùng một ngành hàng hóa.
+
+### Biện pháp cạnh tranh
+* Giảm giá bán, khuyến mãi
+* Nâng cao chất lượng, mẫu mã sản phẩm
+* Tối ưu hóa chi phí để hạ giá trị cá biệt`;
+
+    console.log('[Aivoov TTS] ===== TESTING MARKDOWN CONVERSION =====');
+    const result = this.processTextForTts(sampleMarkdown);
+    console.log('[Aivoov TTS] Final result for TTS:', result);
+    console.log('[Aivoov TTS] ===== END TEST =====');
   }
 }
 

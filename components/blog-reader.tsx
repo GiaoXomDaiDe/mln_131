@@ -17,6 +17,7 @@ import { Calendar, Clock, Pause, Play, User, Volume2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import AivoovTtsService from '@/services/AivoovTtsService'
+import { convertBlogToSpeech } from '@/lib/markdown-to-speech'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
@@ -27,22 +28,7 @@ interface BlogReaderProps {
     blog: BlogData[BlogId]
 }
 
-// Hàm tiện ích để loại bỏ các ký tự Markdown
-const stripMarkdown = (markdownText: string): string => {
-    // Loại bỏ tiêu đề Markdown (ví dụ: ## Tiêu đề)
-    let cleanedText = markdownText.replace(/#{1,6}\s/g, '')
-    // Loại bỏ in đậm/nghiêng (**text**, *text*, _text_)
-    cleanedText = cleanedText.replace(/(\*\*|__|\*|_)(.*?)\1/g, '$2')
-    // Loại bỏ dấu gạch ngang của list items (ví dụ: - item)
-    cleanedText = cleanedText.replace(/-\s/g, '')
-    // Loại bỏ các dòng trống thừa
-    cleanedText = cleanedText.replace(/\n\s*\n/g, '\n')
-    // Thay thế nhiều dấu cách bằng một dấu cách
-    cleanedText = cleanedText.replace(/\s+/g, ' ')
-    // Cắt bỏ khoảng trắng ở đầu và cuối
-    cleanedText = cleanedText.trim()
-    return cleanedText
-}
+// Markdown conversion is now handled by the TTS service using the smart markdown-to-speech utility
 
 export function BlogReader({ blog }: BlogReaderProps) {
     const [isPlaying, setIsPlaying] = useState(false)
@@ -150,28 +136,28 @@ export function BlogReader({ blog }: BlogReaderProps) {
                     return
                 }
 
-                const cleanedContent = stripMarkdown(rawContent)
-                
-            // Giới hạn độ dài nội dung
+                // No need to strip markdown here - TTS service will handle conversion
+                // Just limit the raw content length for API efficiency
                 const maxLength = 5000
-                const finalContent = cleanedContent.length > maxLength 
-                    ? cleanedContent.substring(0, maxLength) + '...'
-                    : cleanedContent
+                const finalContent = rawContent.length > maxLength 
+                    ? rawContent.substring(0, maxLength) + '...'
+                    : rawContent
 
             // Use Aivoov TTS for Vietnamese, otherwise use browser TTS
             if (audioLanguage === 'vietnamese') {
                 console.log('[Blog Reader] ===== USING AIVOOV TTS FOR VIETNAMESE =====');
-                console.log('[Blog Reader] Content length:', finalContent.length);
+                console.log('[Blog Reader] Raw markdown content length:', finalContent.length);
                 console.log('[Blog Reader] Blog ID:', blog.id);
-                console.log('[Blog Reader] Voice ID:', 'f2f08621-cc68-40b8-a19f-1ca21d530893');
+                console.log('[Blog Reader] Using default voice ID from service');
+                console.log('[Blog Reader] Passing raw markdown to TTS service for smart conversion');
                 
                 setIsGeneratingTts(true)
                 try {
                     console.log('[Blog Reader] Calling Aivoov TTS service...');
                     const audio = await aivoovTtsService.current.generateSpeech(
                         finalContent, 
-                        blog.id.toString(), 
-                        'f2f08621-cc68-40b8-a19f-1ca21d530893'
+                        blog.id.toString()
+                        // Using default voice ID from service
                     )
                     setIsGeneratingTts(false)
 
@@ -268,7 +254,12 @@ export function BlogReader({ blog }: BlogReaderProps) {
 
                 setTimeout(() => {
                     try {
-                        const utterance = new SpeechSynthesisUtterance(finalContent)
+                        // Convert markdown to speech-friendly text for browser TTS
+                        const speechText = convertBlogToSpeech(finalContent)
+                        console.log('[Blog Reader] Browser TTS - converted markdown to speech text');
+                        console.log('[Blog Reader] Browser TTS - speech text length:', speechText.length);
+                        
+                        const utterance = new SpeechSynthesisUtterance(speechText)
 
                         const languageMap = {
                             vietnamese: 'vi-VN',
