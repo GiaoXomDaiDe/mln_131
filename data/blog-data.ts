@@ -3510,46 +3510,48 @@ Moving resources (capital, labor, etc.) from one industry to another.
         originalLanguage: 'vietnamese',
         quiz: {
             vietnamese: [
-                {
-                    question: 'Chức năng chính của nhà nước trong kinh tế thị trường là gì?',
-                    options: ['Quyết định giá cả mọi hàng hóa', 'Sản xuất tất cả hàng hóa', 'Khắc phục các khuyết tật của thị trường', 'Loại bỏ hoàn toàn cạnh tranh'],
-                    correct: 2,
-                    explanation: 'Vai trò chính của nhà nước là quản lý kinh tế vĩ mô và khắc phục các khuyết tật của thị trường như độc quyền, ô nhiễm môi trường, và bất bình đẳng.'
-                },
-                {
-                    question: 'Theo tóm tắt, quy luật nào KHÔNG thuộc các quy luật vận hành của kinh tế thị trường?',
-                    options: ['Quy luật giá trị', 'Quy luật cung – cầu', 'Quy luật bảo toàn năng lượng', 'Quy luật cạnh tranh'],
-                    correct: 2,
-                    explanation: 'Các quy luật kinh tế chủ yếu của kinh tế thị trường bao gồm quy luật giá trị, cung-cầu, lưu thông tiền tệ và cạnh tranh. Quy luật bảo toàn năng lượng là một quy luật vật lý.'
-                }
+                { question: 'Quá độ lên chủ nghĩa xã hội là:', options: ['Thay đổi ngay lập tức xã hội cũ thành xã hội mới', 'Quá trình cải biến xã hội cũ, xây dựng từng bước yếu tố mới', 'Thời kỳ dừng lại trước khi sang cộng sản chủ nghĩa', 'Quay lại xã hội phong kiến'], correct: 1 },
+                { question: 'Việt Nam lựa chọn con đường quá độ lên CNXH nào?', options: ['Phải qua chế độ tư bản chủ nghĩa', 'Bỏ qua chế độ tư bản chủ nghĩa', 'Phát triển song song TBCN và XHCN', 'Trở lại nông nghiệp tự cung tự cấp'], correct: 1 },
+                { question: 'Đặc trưng cơ bản nhất của CNXH Việt Nam là:', options: ['Do một giai cấp thống trị tuyệt đối', 'Nhân dân làm chủ, xã hội công bằng, dân chủ, văn minh', 'Phát triển tư bản tư nhân làm chủ đạo', 'Xóa bỏ toàn bộ mọi hình thức sở hữu'], correct: 1 },
+                { question: 'Yếu tố giữ vai trò chủ đạo trong kinh tế thị trường định hướng XHCN ở Việt Nam là:', options: ['Kinh tế tập thể', 'Kinh tế tư nhân', 'Kinh tế nhà nước', 'Kinh tế có vốn đầu tư nước ngoài'], correct: 2 },
+                { question: 'Nhiệm vụ trung tâm trong thời kỳ quá độ ở Việt Nam là:', options: ['Công nghiệp hóa, hiện đại hóa đất nước', 'Duy trì nông nghiệp tự cung tự cấp', 'Loại bỏ kinh tế tư nhân', 'Quay lại bao cấp'], correct: 0 },
+                { question: 'Ý nghĩa lý luận của việc nghiên cứu quá trình quá độ lên CNXH là:', options: ['Bảo tồn phong tục truyền thống', 'Khẳng định tính tất yếu từ TBCN lên CNXH', 'Phục vụ chính trị ngắn hạn', 'Duy trì cơ chế bao cấp'], correct: 1 },
+                { question: 'Văn kiện nào lần đầu tiên khẳng định Việt Nam quá độ lên CNXH bỏ qua TBCN?', options: ['Chính cương vắn tắt 1930', 'Cương lĩnh 1991', 'Cương lĩnh 2011', 'Tuyên ngôn độc lập 1945'], correct: 0 },
+                { question: 'Xuất phát điểm của Việt Nam khi bước vào quá độ lên CNXH là:', options: ['Nước công nghiệp phát triển', 'Nước nông nghiệp lạc hậu, sản xuất nhỏ là chủ yếu', 'Đã trải qua TBCN', 'Xã hội phong kiến hưng thịnh'], correct: 1 },
+                { question: 'Mâu thuẫn cơ bản trong thời kỳ quá độ ở Việt Nam là:', options: ['Giữa nông thôn và thành thị', 'Giữa lực lượng sản xuất lạc hậu và yêu cầu phát triển hiện đại', 'Giữa tư sản và vô sản', 'Giữa dân tộc và giai cấp'], correct: 1 },
+                { question: 'Đặc trưng chính trị của CNXH Việt Nam là:', options: ['Nhà nước dân chủ tư sản', 'Nhà nước pháp quyền XHCN, của nhân dân, do nhân dân, vì nhân dân', 'Nhà nước quân chủ chuyên chế', 'Nhà nước tập trung quyền lực vào thiểu số'], correct: 1 },
+                { question: 'Theo tư tưởng Hồ Chí Minh, nhân tố quyết định trong quá độ lên CNXH ở Việt Nam là:', options: ['Kinh tế thị trường', 'Quyền làm chủ của nhân dân', 'Mô hình bao cấp', 'Viện trợ quốc tế'], correct: 1 },
+                { question: 'Đặc trưng xã hội – văn hóa của CNXH ở Việt Nam là:', options: ['Xã hội có phân hóa giàu nghèo cực lớn', 'Nâng cao đời sống vật chất, tinh thần của nhân dân', 'Ưu tiên kinh tế, bỏ qua văn hóa', 'Loại bỏ toàn bộ tôn giáo'], correct: 1 },
+                { question: 'Sau năm 1986, Việt Nam lựa chọn con đường:', options: ['Giữ cơ chế bao cấp', 'Đổi mới toàn diện, phát triển kinh tế thị trường định hướng XHCN', 'Đóng cửa, tự cung tự cấp', 'Dựa hoàn toàn vào viện trợ quốc tế'], correct: 1 },
+                { question: 'Quan hệ sản xuất trong CNXH được xây dựng chủ yếu dựa trên:', options: ['Sở hữu công cộng về tư liệu sản xuất chủ yếu', 'Sở hữu cá nhân tuyệt đối', 'Sở hữu tư nhân tư bản', 'Phân phối bất công'], correct: 0 },
+                { question: 'Nguyên tắc phân phối trong CNXH Việt Nam hiện nay là:', options: ['Theo quan hệ tư bản – tiền lương', 'Theo nhu cầu tuyệt đối', 'Theo lao động là chủ yếu, kết hợp các hình thức khác', 'Chia đều cho mọi người'], correct: 2 },
+                { question: 'Một đặc trưng quan trọng trong xây dựng CNXH Việt Nam là:', options: ['Chỉ tập trung tăng trưởng kinh tế', 'Kết hợp tăng trưởng kinh tế với tiến bộ, công bằng xã hội', 'Loại bỏ kinh tế ngoài nhà nước', 'Xem nhẹ bảo vệ môi trường'], correct: 1 },
+                { question: 'Đảng ta xác định lực lượng lãnh đạo quá trình quá độ lên CNXH là:', options: ['Toàn thể nhân dân', 'Đảng Cộng sản Việt Nam', 'Giai cấp công nhân và nông dân', 'Giới trí thức'], correct: 1 },
+                { question: 'Nền tảng tư tưởng, kim chỉ nam cho quá trình quá độ lên CNXH ở Việt Nam là:', options: ['Chủ nghĩa Mác – Lênin và tư tưởng Hồ Chí Minh', 'Kinh nghiệm các nước phát triển', 'Chủ nghĩa tư bản hiện đại', 'Văn hóa phương Tây'], correct: 0 },
+                { question: 'Một thành tựu nổi bật của Việt Nam trong quá độ lên CNXH là:', options: ['Trở thành nước công nghiệp phát triển', 'Đạt tăng trưởng kinh tế gắn với giảm nghèo, nâng cao đời sống nhân dân', 'Loại bỏ toàn bộ kinh tế tư nhân', 'Duy trì cơ chế bao cấp'], correct: 1 },
+                { question: 'Thách thức lớn nhất Việt Nam đang đối mặt trong quá trình quá độ lên CNXH là:', options: ['Thiếu nguồn lao động', 'Lực lượng sản xuất còn thấp, nguy cơ tụt hậu xa hơn so với thế giới', 'Không có hội nhập quốc tế', 'Không còn khoảng cách giàu nghèo'], correct: 1 }
             ],
             english: [
-                {
-                    question: 'What is the main function of the state in a market economy?',
-                    options: ['Determining the price of all goods', 'Producing all goods', 'Overcoming market failures', 'Completely eliminating competition'],
-                    correct: 2,
-                    explanation: 'The main role of the state is to manage the macroeconomy and overcome market failures such as monopolies, pollution, and inequality.'
-                },
-                {
-                    question: 'According to the summary, which law is NOT one of the operating laws of a market economy?',
-                    options: ['Law of value', 'Law of supply and demand', 'Law of conservation of energy', 'Law of competition'],
-                    correct: 2,
-                    explanation: 'The main economic laws of a market economy include the law of value, supply and demand, money circulation, and competition. The law of conservation of energy is a physical law.'
-                }
-            ],
-            japanese: [
-                {
-                    question: '市場経済における国家の主な機能は何ですか？',
-                    options: ['すべての商品の価格を決定する', 'すべての商品を生産する', '市場の失敗を是正する', '競争を完全に排除する'],
-                    correct: 2,
-                    explanation: '国家の主な役割は、マクロ経済を管理し、独占、汚染、不平等といった市場の失敗を是正することです。'
-                },
-                {
-                    question: '要約によると、市場経済の運営法則に属さない法則はどれですか？',
-                    options: ['価値の法則', '需給の法則', 'エネルギー保存の法則', '競争の法則'],
-                    correct: 2,
-                    explanation: '市場経済の主な経済法則には、価値の法則、需給の法則、貨幣流通の法則、競争の法則が含まれます。エネルギー保存の法則は物理法則です。'
-                }
+                { question: 'The transition to socialism is:', options: ['An immediate replacement of the old society with a new one', 'A process of transforming the old society, gradually building new elements', 'A pause before moving to communism', 'A return to feudal society'], correct: 1 },
+                { question: 'Which path does Vietnam choose for the transition to socialism?', options: ['Must pass through capitalism', 'Bypassing capitalism', 'Developing capitalism and socialism in parallel', 'Returning to subsistence agriculture'], correct: 1 },
+                { question: 'The most fundamental characteristic of socialism in Vietnam is:', options: ['Absolute rule by a single class', 'People’s mastery; a just, democratic, civilized society', 'Private capitalist development as the main driver', 'Abolition of all forms of ownership'], correct: 1 },
+                { question: 'The leading sector in Vietnam’s socialist-oriented market economy is:', options: ['Collective economy', 'Private economy', 'State economy', 'Foreign-invested economy'], correct: 2 },
+                { question: 'The central task in Vietnam’s transition period is:', options: ['Industrialization and modernization of the country', 'Maintaining subsistence agriculture', 'Eliminating the private economy', 'Returning to subsidy mechanisms'], correct: 0 },
+                { question: 'The theoretical significance of studying the transition to socialism is:', options: ['Preserving traditional customs', 'Affirming the inevitability from capitalism to socialism', 'Serving short-term politics', 'Maintaining the subsidy mechanism'], correct: 1 },
+                { question: 'Which document first affirmed Vietnam’s line of transitioning to socialism by bypassing capitalism?', options: ['Brief Political Thesis 1930', 'Platform 1991', 'Platform 2011', 'Declaration of Independence 1945'], correct: 0 },
+                { question: 'Vietnam’s starting point when entering the transition to socialism was:', options: ['A developed industrial country', 'An underdeveloped agricultural country with predominantly small production', 'Having gone through capitalism', 'A flourishing feudal society'], correct: 1 },
+                { question: 'The fundamental contradiction in Vietnam’s transition period is:', options: ['Between rural and urban areas', 'Between backward productive forces and the demands of modern development', 'Between the bourgeoisie and the proletariat', 'Between nation and class'], correct: 1 },
+                { question: 'The political characteristic of socialism in Vietnam is:', options: ['A bourgeois democratic state', 'A socialist rule-of-law state of the people, by the people, for the people', 'An absolute monarchy', 'A state concentrating power in a minority'], correct: 1 },
+                { question: 'According to Ho Chi Minh’s thought, the decisive factor in Vietnam’s transition to socialism is:', options: ['The market economy', 'The people’s mastery', 'The subsidy model', 'International aid'], correct: 1 },
+                { question: 'A socio-cultural characteristic of socialism in Vietnam is:', options: ['Extremely large wealth disparities', 'Improving the material and spiritual life of the people', 'Prioritizing the economy while ignoring culture', 'Eliminating all religions'], correct: 1 },
+                { question: 'After 1986, Vietnam chose the path of:', options: ['Maintaining the subsidy mechanism', 'Comprehensive Renovation (Doi Moi), developing a socialist-oriented market economy', 'Closing off and returning to self-sufficiency', 'Relying entirely on international aid'], correct: 1 },
+                { question: 'Production relations in socialism are primarily built upon:', options: ['Public ownership of the principal means of production', 'Absolute personal ownership', 'Private capitalist ownership', 'Unjust distribution'], correct: 0 },
+                { question: 'The current distribution principle in Vietnam’s socialism is:', options: ['According to the capital–wage relation', 'According to absolute needs', 'Primarily according to labor, combined with other forms', 'Evenly sharing to everyone'], correct: 2 },
+                { question: 'An important characteristic in building socialism in Vietnam is:', options: ['Focusing only on economic growth', 'Combining economic growth with social progress and justice', 'Eliminating the non-state economy', 'Downplaying environmental protection'], correct: 1 },
+                { question: 'The force leading the transition to socialism, as defined by the Party, is:', options: ['All the people', 'The Communist Party of Vietnam', 'The working class and peasantry', 'The intelligentsia'], correct: 1 },
+                { question: 'The ideological foundation guiding Vietnam’s transition to socialism is:', options: ['Marxism–Leninism and Ho Chi Minh Thought', 'Experience of developed countries', 'Modern capitalism', 'Western culture'], correct: 0 },
+                { question: 'A notable achievement of Vietnam in the transition to socialism is:', options: ['Becoming a developed industrial nation', 'Achieving economic growth alongside poverty reduction and improved living standards', 'Eliminating the entire private economy', 'Maintaining the subsidy mechanism'], correct: 1 },
+                { question: 'The greatest challenge Vietnam faces in the transition to socialism is:', options: ['Lack of labor force', 'Low level of productive forces, risk of falling further behind the world', 'No international integration', 'Absence of wealth disparities'], correct: 1 }
             ],
         },
     },
