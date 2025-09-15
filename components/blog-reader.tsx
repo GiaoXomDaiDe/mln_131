@@ -16,6 +16,7 @@ import { useToast } from '@/hooks/use-toast'
 import { Calendar, Clock, Pause, Play, User, Volume2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import AivoovTtsService from '@/services/AivoovTtsService'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
@@ -55,6 +56,10 @@ export function BlogReader({ blog }: BlogReaderProps) {
     const [progress, setProgress] = useState(0)
     const [currentUtterance, setCurrentUtterance] =
         useState<SpeechSynthesisUtterance | null>(null)
+    const [isLoadingTts, setIsLoadingTts] = useState(false)
+    const [isGeneratingTts, setIsGeneratingTts] = useState(false)
+    const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null)
+    const aivoovTtsService = useRef(AivoovTtsService.getInstance())
 
     const handleScroll = useCallback(() => {
         if (articleRef.current) {
@@ -101,33 +106,42 @@ export function BlogReader({ blog }: BlogReaderProps) {
             if (currentUtterance) {
                 speechSynthesis.cancel()
             }
+            if (currentAudio) {
+                currentAudio.pause()
+                currentAudio.currentTime = 0
+            }
         }
-    }, [currentUtterance])
+    }, [currentUtterance, currentAudio])
 
-    const handleTextToSpeech = () => {
-        // Kiểm tra xem browser có hỗ trợ Speech Synthesis không
-        if (!('speechSynthesis' in window)) {
-            toast({
-                title: "Lỗi Text-to-Speech",
-                description: "Trình duyệt của bạn không hỗ trợ tính năng đọc văn bản.",
-                variant: "destructive",
-            })
+    const handleTextToSpeech = async () => {
+        console.log('[Blog Reader] ===== HANDLE TEXT TO SPEECH CALLED =====');
+        console.log('[Blog Reader] Current state - isPlaying:', isPlaying);
+        console.log('[Blog Reader] Current state - audioLanguage:', audioLanguage);
+        console.log('[Blog Reader] Current state - isLoadingTts:', isLoadingTts);
+        console.log('[Blog Reader] Current state - isGeneratingTts:', isGeneratingTts);
+        
+        // Stop any currently playing audio/speech
+        if (isPlaying) {
+            console.log('[Blog Reader] Stopping currently playing audio...');
+            if (currentAudio) {
+                currentAudio.pause()
+                currentAudio.currentTime = 0
+                setCurrentAudio(null)
+            }
+            if (currentUtterance) {
+                speechSynthesis.cancel()
+                setCurrentUtterance(null)
+            }
+            setIsPlaying(false)
             return
         }
 
-        // Kiểm tra xem Speech Synthesis có sẵn sàng không
-        if (speechSynthesis.speaking) {
-            speechSynthesis.cancel()
-        }
+        setIsLoadingTts(true)
 
-        if (isPlaying && currentUtterance) {
-            speechSynthesis.cancel()
-            setIsPlaying(false)
-            setCurrentUtterance(null)
-        } else {
             try {
-                const rawContent = blog.content[currentLanguage]
+            const rawContent = blog.content[audioLanguage]
                 if (!rawContent || rawContent.trim() === '') {
+                setIsLoadingTts(false)
                     toast({
                         title: "Không có nội dung",
                         description: "Không có nội dung để đọc trong ngôn ngữ hiện tại.",
@@ -138,13 +152,120 @@ export function BlogReader({ blog }: BlogReaderProps) {
 
                 const cleanedContent = stripMarkdown(rawContent)
                 
-                // Giới hạn độ dài nội dung ngắn hơn để tránh lỗi
+            // Giới hạn độ dài nội dung
                 const maxLength = 5000
                 const finalContent = cleanedContent.length > maxLength 
                     ? cleanedContent.substring(0, maxLength) + '...'
                     : cleanedContent
 
-                // Đợi một chút để speechSynthesis sẵn sàng
+            // Use Aivoov TTS for Vietnamese, otherwise use browser TTS
+            if (audioLanguage === 'vietnamese') {
+                console.log('[Blog Reader] ===== USING AIVOOV TTS FOR VIETNAMESE =====');
+                console.log('[Blog Reader] Content length:', finalContent.length);
+                console.log('[Blog Reader] Blog ID:', blog.id);
+                console.log('[Blog Reader] Voice ID:', 'f2f08621-cc68-40b8-a19f-1ca21d530893');
+                
+                setIsGeneratingTts(true)
+                try {
+                    console.log('[Blog Reader] Calling Aivoov TTS service...');
+                    const audio = await aivoovTtsService.current.generateSpeech(
+                        finalContent, 
+                        blog.id.toString(), 
+                        'f2f08621-cc68-40b8-a19f-1ca21d530893'
+                    )
+                    setIsGeneratingTts(false)
+
+                    console.log('[Blog Reader] ===== AIVOOV TTS RETURNED AUDIO ELEMENT =====');
+                    console.log('[Blog Reader] Audio src:', audio.src);
+                    console.log('[Blog Reader] Audio readyState:', audio.readyState);
+                    console.log('[Blog Reader] Audio networkState:', audio.networkState);
+                    console.log('[Blog Reader] Audio duration:', audio.duration);
+
+                    audio.onloadstart = () => {
+                        console.log('[Blog Reader] Audio loadstart event');
+                        setIsLoadingTts(false)
+                    }
+
+                    audio.oncanplaythrough = () => {
+                        console.log('[Blog Reader] Audio canplaythrough event');
+                        setIsLoadingTts(false)
+                    }
+
+                    audio.onplay = () => {
+                        console.log('[Blog Reader] Audio play event - playback started');
+                        setIsPlaying(true)
+                        setCurrentAudio(audio)
+                    }
+
+                    audio.onpause = () => {
+                        console.log('[Blog Reader] Audio pause event');
+                        setIsPlaying(false)
+                    }
+
+                    audio.onended = () => {
+                        console.log('[Blog Reader] Audio ended event');
+                        setIsPlaying(false)
+                        setCurrentAudio(null)
+                    }
+
+                    audio.onerror = (event) => {
+                        console.error('[Blog Reader] ===== AUDIO ERROR EVENT =====');
+                        console.error('[Blog Reader] Error event:', event);
+                        console.error('[Blog Reader] Audio error code:', audio.error?.code);
+                        console.error('[Blog Reader] Audio error message:', audio.error?.message);
+                        console.error('[Blog Reader] Audio src:', audio.src);
+                        console.error('[Blog Reader] Audio readyState:', audio.readyState);
+                        console.error('[Blog Reader] Audio networkState:', audio.networkState);
+                        console.error('[Blog Reader] ===== END AUDIO ERROR =====');
+                        
+                        setIsLoadingTts(false)
+                        setIsPlaying(false)
+                        setCurrentAudio(null)
+                        toast({
+                            title: "Lỗi Aivoov TTS",
+                            description: "Không thể phát âm thanh từ Aivoov TTS. Vui lòng thử lại.",
+                            variant: "destructive",
+                        })
+                    }
+
+                    try {
+                        console.log('[Blog Reader] Attempting to play audio...');
+                        await audio.play()
+                        console.log('[Blog Reader] ✅ Aivoov TTS playback started successfully!');
+                    } catch (playError) {
+                        console.error('[Blog Reader] ❌ Aivoov TTS playback failed:', playError);
+                        throw playError;
+                    }
+                } catch (aivoovError) {
+                    console.error('[Blog Reader] Aivoov TTS Error:', aivoovError);
+                    setIsLoadingTts(false)
+                    setIsGeneratingTts(false)
+                    
+                    const errorMessage = aivoovError instanceof Error 
+                        ? aivoovError.message 
+                        : "Không thể kết nối đến dịch vụ Aivoov TTS. Vui lòng thử lại.";
+                        
+                    toast({
+                        title: "Lỗi Aivoov TTS",
+                        description: errorMessage,
+                        variant: "destructive",
+                    })
+                }
+            } else {
+                // Use browser TTS for other languages
+                if (!('speechSynthesis' in window)) {
+                    toast({
+                        title: "Lỗi Text-to-Speech",
+                        description: "Trình duyệt của bạn không hỗ trợ tính năng đọc văn bản.",
+                        variant: "destructive",
+                    })
+                    return
+                }
+
+                if (speechSynthesis.speaking) {
+                    speechSynthesis.cancel()
+                }
+
                 setTimeout(() => {
                     try {
                         const utterance = new SpeechSynthesisUtterance(finalContent)
@@ -156,12 +277,14 @@ export function BlogReader({ blog }: BlogReaderProps) {
                         }
 
                         utterance.lang = languageMap[audioLanguage]
-                        utterance.rate = 0.8 // Giảm tốc độ để ổn định hơn
+                        utterance.rate = 0.8
                         utterance.pitch = 1
                         utterance.volume = 0.8
 
                         utterance.onstart = () => {
-                            // Không log để tránh lỗi trong console
+                            setIsLoadingTts(false)
+                            setIsPlaying(true)
+                            setCurrentUtterance(utterance)
                         }
 
                         utterance.onend = () => {
@@ -170,11 +293,9 @@ export function BlogReader({ blog }: BlogReaderProps) {
                         }
 
                         utterance.onerror = (event) => {
-                            // Không sử dụng console.error để tránh vòng lặp lỗi trong Next.js
+                            setIsLoadingTts(false)
                             setIsPlaying(false)
                             setCurrentUtterance(null)
-                            
-                            // Chỉ hiển thị toast cho người dùng
                             toast({
                                 title: "Lỗi Text-to-Speech",
                                 description: "Không thể phát âm thanh. Vui lòng thử lại.",
@@ -182,19 +303,9 @@ export function BlogReader({ blog }: BlogReaderProps) {
                             })
                         }
 
-                        utterance.onpause = () => {
-                            // Không log để tránh lỗi
-                        }
-
-                        utterance.onresume = () => {
-                            // Không log để tránh lỗi
-                        }
-
                         speechSynthesis.speak(utterance)
-                        setIsPlaying(true)
-                        setCurrentUtterance(utterance)
-                        
                     } catch (innerError) {
+                        setIsLoadingTts(false)
                         setIsPlaying(false)
                         setCurrentUtterance(null)
                         toast({
@@ -204,17 +315,16 @@ export function BlogReader({ blog }: BlogReaderProps) {
                         })
                     }
                 }, 100)
-                
+            }
             } catch (error) {
-                // Không sử dụng console.error, chỉ hiển thị toast
+            setIsLoadingTts(false)
+            setIsGeneratingTts(false)
                 setIsPlaying(false)
-                setCurrentUtterance(null)
                 toast({
                     title: "Lỗi hệ thống",
                     description: "Có lỗi xảy ra khi chuẩn bị nội dung.",
                     variant: "destructive",
                 })
-            }
         }
     }
 
@@ -349,8 +459,19 @@ export function BlogReader({ blog }: BlogReaderProps) {
                                         onClick={handleTextToSpeech}
                                         variant="outline"
                                         className="w-full"
+                                        disabled={isLoadingTts || isGeneratingTts}
                                     >
-                                        {isPlaying ? (
+                                        {isGeneratingTts ? (
+                                            <>
+                                                <div className="h-4 w-4 mr-2 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                                                {t('audio.generating')}
+                                            </>
+                                        ) : isLoadingTts ? (
+                                            <>
+                                                <div className="h-4 w-4 mr-2 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                                                {t('audio.loading')}
+                                            </>
+                                        ) : isPlaying ? (
                                             <>
                                                 <Pause className="h-4 w-4 mr-2" />
                                                 {t('audio.stop')}

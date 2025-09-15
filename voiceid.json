@@ -1,0 +1,374 @@
+{
+    "status": true,
+    "message": "Voice found",
+    "id": 1757964963,
+    "data": [{
+        "value": "33e7ce05-4d98-41d2-a51d-128af7067ed8",
+        "name": "HoaiMy",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "HoaiMy ( Female - Premium )",
+        "voice_id": "33e7ce05-4d98-41d2-a51d-128af7067ed8"
+    }, {
+        "value": "a070e53c-410c-452f-b6f0-249d9f7956bd",
+        "name": "NamMinh",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "NamMinh ( Male - Premium )",
+        "voice_id": "a070e53c-410c-452f-b6f0-249d9f7956bd"
+    }, {
+        "value": "da66d66b-fdf3-4344-9989-00346d9048d2",
+        "name": "Linh",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Linh ( Female - Standard )",
+        "voice_id": "da66d66b-fdf3-4344-9989-00346d9048d2"
+    }, {
+        "value": "b2b28031-c8ed-4794-b128-0ac0863182e5",
+        "name": "Sáng",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Sáng ( Male - Standard )",
+        "voice_id": "b2b28031-c8ed-4794-b128-0ac0863182e5"
+    }, {
+        "value": "f31c27ce-c345-404d-9538-0eca9fa71c6b",
+        "name": "Thương",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Thương ( Female - Standard )",
+        "voice_id": "f31c27ce-c345-404d-9538-0eca9fa71c6b"
+    }, {
+        "value": "2ac3893b-1808-48f6-9223-19073d6bb912",
+        "name": "Đạt",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Đạt ( Male - Standard )",
+        "voice_id": "2ac3893b-1808-48f6-9223-19073d6bb912"
+    }, {
+        "value": "f2f08621-cc68-40b8-a19f-1ca21d530893",
+        "name": "Linh",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Linh ( Female - Standard )",
+        "voice_id": "f2f08621-cc68-40b8-a19f-1ca21d530893"
+    }, {
+        "value": "6f740002-500a-4279-bcb8-127e3987aa76",
+        "name": "Sáng",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Sáng ( Male - Standard )",
+        "voice_id": "6f740002-500a-4279-bcb8-127e3987aa76"
+    }, {
+        "value": "8ac7ea2b-8778-4a7b-b567-27727452a4a3",
+        "name": "Thương",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Thương ( Female - Standard )",
+        "voice_id": "8ac7ea2b-8778-4a7b-b567-27727452a4a3"
+    }, {
+        "value": "491d1e48-039c-40cd-88ad-2a5f9ea13c5c",
+        "name": "Đạt",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Đạt ( Male - Standard )",
+        "voice_id": "491d1e48-039c-40cd-88ad-2a5f9ea13c5c"
+    }, {
+        "value": "b46191e6-407f-4043-91da-268142fa41e8",
+        "name": "Xuân",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Xuân ( Female - Ultra )",
+        "voice_id": "b46191e6-407f-4043-91da-268142fa41e8"
+    }, {
+        "value": "968f31cc-fa45-445d-8aa5-28d7d20f513b",
+        "name": "Lực",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Lực ( Male - Ultra )",
+        "voice_id": "968f31cc-fa45-445d-8aa5-28d7d20f513b"
+    }, {
+        "value": "5508d51e-326e-4a84-befa-0160b4c4639f",
+        "name": "Liên",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Liên ( Female - Ultra )",
+        "voice_id": "5508d51e-326e-4a84-befa-0160b4c4639f"
+    }, {
+        "value": "4219f272-0637-4649-b446-1881c3f41f44",
+        "name": "Ngân",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Ngân ( Male - Ultra )",
+        "voice_id": "4219f272-0637-4649-b446-1881c3f41f44"
+    }, {
+        "value": "f08523ec-7899-44ab-964b-073226a80580",
+        "name": "Văn",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Văn ( Male - Ultra )",
+        "voice_id": "f08523ec-7899-44ab-964b-073226a80580"
+    }, {
+        "value": "86b837e4-48ac-485e-874c-20fe2e2fea1b",
+        "name": "Hưng",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Hưng ( Male - Ultra )",
+        "voice_id": "86b837e4-48ac-485e-874c-20fe2e2fea1b"
+    }, {
+        "value": "5ff635bb-75b5-4467-8dc0-1946db8ad616",
+        "name": "Hải",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Hải ( Male - Ultra )",
+        "voice_id": "5ff635bb-75b5-4467-8dc0-1946db8ad616"
+    }, {
+        "value": "1f66ebfb-0152-4256-87a8-0028388e1fb1",
+        "name": "Ca",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Ca ( Female - Ultra )",
+        "voice_id": "1f66ebfb-0152-4256-87a8-0028388e1fb1"
+    }, {
+        "value": "3be63b43-a667-4503-9e53-2a5e63f9e6ca",
+        "name": "Thảo",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Thảo ( Female - Ultra )",
+        "voice_id": "3be63b43-a667-4503-9e53-2a5e63f9e6ca"
+    }, {
+        "value": "7478ca06-fdf4-4888-bce5-062b34a384f5",
+        "name": "Hiền",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Hiền ( Female - Ultra )",
+        "voice_id": "7478ca06-fdf4-4888-bce5-062b34a384f5"
+    }, {
+        "value": "bc62d6f5-5164-458c-8039-08fa4c6260d0",
+        "name": "Luận",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Luận ( Male - Ultra )",
+        "voice_id": "bc62d6f5-5164-458c-8039-08fa4c6260d0"
+    }, {
+        "value": "58153c76-74d1-46a0-bbe6-0bd24f64e9fe",
+        "name": "Bảo",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Bảo ( Female - Ultra )",
+        "voice_id": "58153c76-74d1-46a0-bbe6-0bd24f64e9fe"
+    }, {
+        "value": "ef13c996-ec0b-423e-a03f-19697e36d9cd",
+        "name": "Mạnh",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Mạnh ( Male - Ultra )",
+        "voice_id": "ef13c996-ec0b-423e-a03f-19697e36d9cd"
+    }, {
+        "value": "db1e6ab6-d705-480b-b501-0e00e40b8f13",
+        "name": "Ngân",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Ngân ( Female - Ultra )",
+        "voice_id": "db1e6ab6-d705-480b-b501-0e00e40b8f13"
+    }, {
+        "value": "8bdb2746-1c30-4383-8c23-1f4fa808c518",
+        "name": "Thời",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Thời ( Male - Ultra )",
+        "voice_id": "8bdb2746-1c30-4383-8c23-1f4fa808c518"
+    }, {
+        "value": "b65e235c-0bdc-4091-8c7d-07a54f351ac4",
+        "name": "Thy",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Thy ( Female - Ultra )",
+        "voice_id": "b65e235c-0bdc-4091-8c7d-07a54f351ac4"
+    }, {
+        "value": "e02d908e-6a20-47e0-8b01-195f484c06a6",
+        "name": "Chấn",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Chấn ( Male - Ultra )",
+        "voice_id": "e02d908e-6a20-47e0-8b01-195f484c06a6"
+    }, {
+        "value": "6916de95-16e5-414c-82ec-25965c862f5a",
+        "name": "San",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "San ( Female - Ultra )",
+        "voice_id": "6916de95-16e5-414c-82ec-25965c862f5a"
+    }, {
+        "value": "2fdfc87e-1f0c-4985-90ba-1295d73c4a2c",
+        "name": "Laomedeia",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Laomedeia ( Female - Ultra )",
+        "voice_id": "2fdfc87e-1f0c-4985-90ba-1295d73c4a2c"
+    }, {
+        "value": "75c3a317-a6e0-4812-9faf-2074d53ef51f",
+        "name": "Liên",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Liên ( Female - Ultra )",
+        "voice_id": "75c3a317-a6e0-4812-9faf-2074d53ef51f"
+    }, {
+        "value": "b8297228-6616-4639-8e24-269478744a87",
+        "name": "Cẩn",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Cẩn ( Male - Ultra )",
+        "voice_id": "b8297228-6616-4639-8e24-269478744a87"
+    }, {
+        "value": "eb3dbba5-34b2-4243-a909-0fdcc65f0c40",
+        "name": "Quốc",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Quốc ( Male - Ultra )",
+        "voice_id": "eb3dbba5-34b2-4243-a909-0fdcc65f0c40"
+    }, {
+        "value": "8993e924-1841-4b8f-a1eb-1506664299c6",
+        "name": "Hà",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Hà ( Female - Ultra )",
+        "voice_id": "8993e924-1841-4b8f-a1eb-1506664299c6"
+    }, {
+        "value": "d70390b4-9cd4-437f-a828-05b724c25617",
+        "name": "Khánh",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Khánh ( Male - Ultra )",
+        "voice_id": "d70390b4-9cd4-437f-a828-05b724c25617"
+    }, {
+        "value": "e66d19de-1936-456d-a3f3-1e1009dd72c7",
+        "name": "Trọng",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Trọng ( Male - Ultra )",
+        "voice_id": "e66d19de-1936-456d-a3f3-1e1009dd72c7"
+    }, {
+        "value": "b3a8310b-2a6e-48f8-b928-004b4102627f",
+        "name": "Thụy",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Thụy ( Male - Ultra )",
+        "voice_id": "b3a8310b-2a6e-48f8-b928-004b4102627f"
+    }, {
+        "value": "7d7e7a43-1f03-423d-8852-0b6e0350f47b",
+        "name": "Định",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Định ( Male - Ultra )",
+        "voice_id": "7d7e7a43-1f03-423d-8852-0b6e0350f47b"
+    }, {
+        "value": "daa7d5e0-4ab8-4a81-b098-10b9a20c034c",
+        "name": "My",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "My ( Female - Ultra )",
+        "voice_id": "daa7d5e0-4ab8-4a81-b098-10b9a20c034c"
+    }, {
+        "value": "05d74340-9ed6-4727-8151-0caaaccc1b90",
+        "name": "Tuệ",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Tuệ ( Male - Ultra )",
+        "voice_id": "05d74340-9ed6-4727-8151-0caaaccc1b90"
+    }, {
+        "value": "6149a142-76bd-449b-8462-1236d3fc9982",
+        "name": "Vindemiatrix",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Vindemiatrix ( Female - Ultra )",
+        "voice_id": "6149a142-76bd-449b-8462-1236d3fc9982"
+    }, {
+        "value": "773b3f14-2fac-47e0-b3d1-16a3e8ba3717",
+        "name": "Hằng",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Hằng ( Female - Ultra )",
+        "voice_id": "773b3f14-2fac-47e0-b3d1-16a3e8ba3717"
+    }, {
+        "value": "d4786ab9-3126-4ac4-8a55-0e870d2b66ef",
+        "name": "Nhạn",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Nhạn ( Male - Ultra )",
+        "voice_id": "d4786ab9-3126-4ac4-8a55-0e870d2b66ef"
+    }, {
+        "value": "47dcf475-3107-43ef-b36c-03a82c2365a4",
+        "name": "Hương",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Hương ( Female - Premium )",
+        "voice_id": "47dcf475-3107-43ef-b36c-03a82c2365a4"
+    }, {
+        "value": "33fc6497-f661-4227-aacd-13bdfd804cce",
+        "name": "Kính",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Kính ( Male - Premium )",
+        "voice_id": "33fc6497-f661-4227-aacd-13bdfd804cce"
+    }, {
+        "value": "80408cf3-c67b-4798-858b-1fe3ff278679",
+        "name": "Vi",
+        "gender": "Female",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Vi ( Female - Premium )",
+        "voice_id": "80408cf3-c67b-4798-858b-1fe3ff278679"
+    }, {
+        "value": "b66b3079-c375-46f8-8515-12af511dba0b",
+        "name": "Duy",
+        "gender": "Male",
+        "language_name": "Vietnamese (Vietnam)",
+        "language_code": "vi-VN",
+        "label": "Duy ( Male - Premium )",
+        "voice_id": "b66b3079-c375-46f8-8515-12af511dba0b"
+    }]
+}

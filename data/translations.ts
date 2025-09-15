@@ -832,6 +832,16 @@ export const translations = {
             english: 'Play',
             japanese: '再生',
         },
+        loading: {
+            vietnamese: 'Đang tải...',
+            english: 'Loading...',
+            japanese: '読み込み中...',
+        },
+        generating: {
+            vietnamese: 'Đang tạo giọng nói...',
+            english: 'Generating voice...',
+            japanese: '音声を生成中...',
+        },
     },
 
     // Common
