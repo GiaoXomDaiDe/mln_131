@@ -1,6 +1,7 @@
 // app/quiz/[chapterId]/page.tsx
 "use client";
 
+import { use } from "react";
 import { Quiz } from "@/components/quiz";
 import { notFound } from "next/navigation";
 import { blogData } from "@/data/blog-data";
@@ -19,11 +20,11 @@ import { useLanguage } from "@/contexts/language-context";
 import type { QuizQuestion } from "@/components/quiz";
 
 interface QuizPageProps {
-  params: { chapterId: string };
+  params: Promise<{ chapterId: string }>;
 }
 
 export default function QuizChapterPage({ params }: QuizPageProps) {
-  const { chapterId } = params;
+  const { chapterId } = use(params);
   const { t, getLocalizedContent, currentLanguage } = useLanguage();
 
   let sectionsInChapter: SectionId[] = [];
@@ -74,7 +75,7 @@ export default function QuizChapterPage({ params }: QuizPageProps) {
 
   // Kết hợp tất cả các câu hỏi quiz từ các blog của chương (hoặc section được chỉ định)
   const combinedQuizQuestions = effectiveBlogs.flatMap((blog) =>
-    (blog.quiz?.[currentLanguage] || []).map((q: any) => ({
+    (blog.quiz?.[currentLanguage as keyof typeof blog.quiz] || []).map((q: any) => ({
       question: q.question,
       options: q.options,
       correct: q.correct ?? q.correctAnswer,
