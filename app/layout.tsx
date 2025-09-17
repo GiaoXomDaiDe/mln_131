@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { ChatBubble } from '@/components/chat-bubble'
 import { ClientOnly } from '@/components/client-only'
@@ -35,8 +35,56 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     <LanguageProvider>
+                        {/* Topographic Background Images - Responsive to theme */}
+                        <div className="fixed inset-0 -z-50 overflow-hidden">
+                            {/* Light mode background */}
+                            <div
+                                className="w-full h-full opacity-60 dark:opacity-0 transition-opacity duration-500"
+                                style={{
+                                    backgroundImage:
+                                        'url(/topography-background-light.png)',
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center center',
+                                    backgroundRepeat: 'no-repeat',
+                                    backgroundAttachment: 'fixed',
+                                    filter: 'contrast(1.3) brightness(1.1)',
+                                }}
+                            />
+                            {/* Dark mode background */}
+                            <div
+                                className="absolute inset-0 w-full h-full opacity-0 dark:opacity-60 transition-opacity duration-500"
+                                style={{
+                                    backgroundImage:
+                                        'url(/topography-background.jpg)',
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center center',
+                                    backgroundRepeat: 'no-repeat',
+                                    backgroundAttachment: 'fixed',
+                                    filter: 'contrast(1.5) brightness(0.9)',
+                                }}
+                            />
+                            {/* Glass Overlay with Custom Colors */}
+                            <div
+                                className="absolute inset-0 backdrop-blur-[0.5px] transition-opacity duration-500"
+                                style={{
+                                    backgroundColor:
+                                        'rgba(225, 222, 217, 0.15)',
+                                }}
+                            ></div>
+                            <div
+                                className="absolute inset-0 opacity-0 dark:opacity-100 backdrop-blur-[0.5px] transition-opacity duration-500"
+                                style={{
+                                    backgroundColor: 'rgba(18, 19, 22, 0.65)', // Darker color with higher opacity for dark mode
+                                }}
+                            ></div>
+                            {/* Enhanced gradient overlay for better readability - More transparent */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-transparent"></div>
+                        </div>
+
                         <Navigation />
-                        <main className="min-h-screen pt-16">{children}</main>
+                        <main className="min-h-screen pt-16 relative z-10">
+                            {children}
+                        </main>
                         <Footer />
                         <ClientOnly>
                             <ChatBubble />

@@ -3,7 +3,7 @@
 import { translations } from '@/data/translations'
 import type React from 'react'
 import { createContext, useContext, useEffect, useState } from 'react'
-type Language = 'vietnamese' | 'english' | 'japanese'
+type Language = 'vietnamese' | 'english'
 
 interface LanguageContextType {
     currentLanguage: Language
@@ -41,7 +41,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         ) as Language
         if (
             savedLanguage &&
-            ['vietnamese', 'english', 'japanese'].includes(savedLanguage)
+            ['vietnamese', 'english'].includes(savedLanguage)
         ) {
             setCurrentLanguage(savedLanguage)
         }

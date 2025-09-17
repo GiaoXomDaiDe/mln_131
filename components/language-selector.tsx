@@ -7,7 +7,6 @@ import { Globe } from "lucide-react"
 const languages = {
   vietnamese: { label: "Tiếng Việt", flag: "🇻🇳" },
   english: { label: "English", flag: "🇺🇸" },
-  japanese: { label: "日本語", flag: "🇯🇵" },
 }
 
 export function LanguageSelector() {
