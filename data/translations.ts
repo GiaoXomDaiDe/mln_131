@@ -46,8 +46,8 @@ export const translations = {
             english: 'Explore Scientific Socialism Chapters',
         },
         title: {
-            vietnamese: 'Trạm Triết',
-            english: 'Trạm Triết',
+            vietnamese: 'Trạm Lý Luận',
+            english: 'Trạm Lý Luận',
         },
         subtitle: {
             vietnamese:
@@ -457,8 +457,8 @@ export const translations = {
     // Metadata
     meta: {
         title: {
-            vietnamese: 'Trạm Triết - Nền tảng học Chủ nghĩa xã hội khoa học',
-            english: 'Trạm Triết - Scientific Socialism Learning Platform',
+            vietnamese: 'Trạm Lý Luận - Nền tảng học Chủ nghĩa xã hội khoa học',
+            english: 'Trạm Lý Luận - Scientific Socialism Learning Platform',
         },
         description: {
             vietnamese:

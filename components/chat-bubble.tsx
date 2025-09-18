@@ -38,7 +38,7 @@ export function ChatBubble() {
     useEffect(() => {
         if (isOpen && messages.length === 0) {
             const welcomeMessageText =
-                'Xin chào! Tôi là AI Assistant chuyên về Chủ nghĩa xã hội khoa học của Trạm Triết. Tôi chỉ có thể trả lời các câu hỏi liên quan đến giáo trình CNXH khoa học và sẽ từ chối những câu hỏi ngoài lĩnh vực này. Bạn muốn tìm hiểu về chương nào trong giáo trình?'
+                'Xin chào! Tôi là AI Assistant chuyên về Chủ nghĩa xã hội khoa học của Trạm Lý Luận. Tôi chỉ có thể trả lời các câu hỏi liên quan đến giáo trình CNXH khoa học và sẽ từ chối những câu hỏi ngoài lĩnh vực này. Bạn muốn tìm hiểu về chương nào trong giáo trình?'
             geminiApiClient.resetChatHistory()
             setMessages([
                 {
@@ -142,7 +142,7 @@ export function ChatBubble() {
                     <Card className="w-full max-w-2xl h-[70vh] flex flex-col">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                             <CardTitle className="text-lg">
-                                {t ? t('chat.title') : 'Trạm Triết'}
+                                {t ? t('chat.title') : 'Trạm Lý Luận'}
                             </CardTitle>
                             <Button
                                 variant="ghost"
@@ -201,7 +201,7 @@ export function ChatBubble() {
                                     placeholder={
                                         t
                                             ? t('chat.placeholder')
-                                            : 'Trò chuyện cùng Trạm Triết...'
+                                            : 'Trò chuyện cùng Trạm Lý Luận...'
                                     }
                                     className="flex-1"
                                     disabled={isBotReplying}

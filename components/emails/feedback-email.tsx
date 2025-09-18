@@ -33,7 +33,9 @@ export default function FeedbackEmail({
             <Body style={main}>
                 <Container style={container}>
                     <Section style={section}>
-                        <Text style={title}>📧 Feedback mới từ Trạm Triết</Text>
+                        <Text style={title}>
+                            📧 Feedback mới từ Trạm Lý Luận
+                        </Text>
 
                         <Text style={text}>
                             <strong>Người gửi:</strong> {name}
@@ -66,7 +68,7 @@ export default function FeedbackEmail({
 
                         <Text style={footer}>
                             Email này được gửi từ form feedback trên website
-                            Trạm Triết.
+                            Trạm Lý Luận.
                         </Text>
                     </Section>
                 </Container>

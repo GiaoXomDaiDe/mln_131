@@ -23,28 +23,8 @@ Là một hệ tư tưởng và phong trào chính trị nhằm xây dựng mộ
 
 ---
 
-## Đặc trưng bản chất của CNXH
-- Giải phóng giai cấp, dân tộc, xã hội, con người; tạo điều kiện để con người phát triển toàn diện.  
-- Có **nền kinh tế phát triển cao** dựa trên **lực lượng sản xuất hiện đại** và **chế độ công hữu** về tư liệu sản xuất chủ yếu.  
-- Có **nhà nước kiểu mới** mang bản chất giai cấp công nhân, đại biểu cho lợi ích, quyền lực và ý chí của nhân dân lao động.  
-- Có **chế độ xã hội do nhân dân lao động làm chủ**.  
-- Có **nền văn hóa phát triển cao**, kế thừa và phát huy các giá trị của văn hóa dân tộc và tinh hoa văn hóa nhân loại.  
-- Bảo đảm **bình đẳng, đoàn kết giữa các dân tộc** và có **quan hệ hữu nghị, hợp tác** với nhân dân các nước trên thế giới.
 
----
-
-## Thời kỳ quá độ lên chủ nghĩa xã hội là gì?
-Là thời kỳ **cải biến cách mạng sâu sắc, toàn diện** trên các lĩnh vực của đời sống xã hội. Đây là thời kỳ **đấu tranh quyết liệt** giữa những nhân tố của xã hội mới và **tàn dư của xã hội cũ** để tạo ra những **tiền đề vật chất và tinh thần** cần thiết cho CNXH ra đời và phát triển.
-
----
-
-## Vì sao gọi là “quá độ”?
-Được gọi là “quá độ” để nhấn mạnh **một trạng thái xã hội không ổn định**, trong đó quá trình chuyển biến diễn ra liên tục, vì các lý do sau:
-
-- **Tính chất hỗn hợp:** Xã hội trong thời kỳ quá độ **chưa phải XHCN hoàn chỉnh** mà **đan xen** tàn dư cũ với yếu tố mới đang hình thành.  
-- **Mâu thuẫn và đấu tranh:** Giai đoạn diễn ra **đấu tranh gay gắt, phức tạp** giữa cái cũ và cái mới, giữa **TBCN** và **XHCN**.  
-- **Nhiệm vụ chưa hoàn thành:** Mục tiêu cuối cùng của CNXH **chưa thể đạt ngay**; cần thời gian đủ dài để **cải tạo xã hội cũ**, **xây dựng hạ tầng kinh tế – xã hội mới**, và **phát triển lực lượng sản xuất** ở mức cao.  
-- **Sự khác biệt về trình độ:** Các quốc gia đi lên CNXH **từ các mức phát triển khác nhau**, nên lộ trình và bước đi **không đồng nhất**.`,
+`,
 
             english: `
 # Concepts of Socialism and the Transitional Period
@@ -60,28 +40,9 @@ A system of ideas and a political movement aimed at building a society in which 
 
 ---
 
-## Essential characteristics of socialism
-- Liberation of classes, the nation, society, and the individual; enabling people to develop fully.  
-- A **highly developed economy** based on **modern productive forces** and **public ownership** of the principal means of production.  
-- A **new-type state** with a working-class character, representing the interests, power, and will of working people.  
-- A **social order in which working people are the masters**.  
-- A **highly developed culture** that inherits and promotes national values and the finest achievements of human civilization.  
-- **Equality and solidarity among nations/ethnicities**, and **friendly, cooperative relations** with peoples of the world.
 
----
 
-## What is the transitional period to socialism?
-A period of **profound, comprehensive revolutionary transformation** across all spheres of social life. It is a time of **intense struggle** between elements of the new society and **remnants of the old**, to create the **material and spiritual preconditions** for socialism to arise and develop.
 
----
-
-## Why is it called a “transition”?
-It emphasizes **an unstable social state** in which continuous transformation occurs, for the following reasons:
-
-- **Mixed character:** During the transition, society is **not yet fully socialist**; **remnants of the old** coexist with **emerging socialist elements**.  
-- **Contradiction and struggle:** A phase of **fierce, complex struggle** between the old and the new—between **capitalism** and **socialism**.  
-- **Unfinished tasks:** Socialism’s ultimate goals **cannot be achieved immediately**; time is needed to **remake the old society**, **build new socio-economic infrastructure**, and **develop the productive forces** to a high level.  
-- **Different starting points:** Countries advance toward socialism **from different levels of development**, so paths and tempos are **not uniform**.
 `,
         },
         excerpt: {
