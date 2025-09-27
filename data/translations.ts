@@ -22,17 +22,10 @@ export const translations = {
             english: 'Quiz',
         },
         subtitle: {
-            vietnamese: 'Nền tảng học AI',
-            english: 'AI Learning Platform',
+            vietnamese: 'Nền tảng học Tư tưởng HCM',
+            english: 'HCM Ideology Platform',
         },
-        adminblogs: {
-            vietnamese: 'Quản lý Blog',
-            english: 'Manage blogs',
-        },
-        adminVideos: {
-            vietnamese: 'Quản lý Video',
-            english: 'Manage Videos',
-        },
+
         theme: {
             vietnamese: 'Giao diện',
             english: 'Theme',
@@ -42,18 +35,18 @@ export const translations = {
     // Homepage
     home: {
         exploreBlogs: {
-            vietnamese: 'Khám phá các chương Chủ nghĩa xã hội khoa học',
-            english: 'Explore Scientific Socialism Chapters',
+            vietnamese: 'Khám phá các chương Tư tưởng Hồ Chí Minh',
+            english: 'Explore Ho Chi Minh Ideology Chapters',
         },
         title: {
-            vietnamese: 'Trạm Lý Luận',
-            english: 'Trạm Lý Luận',
+            vietnamese: 'Học Viện Bác Hồ',
+            english: 'Ho Chi Minh Academy',
         },
         subtitle: {
             vietnamese:
-                'Nền tảng học Chủ nghĩa xã hội khoa học với AI assistant và nội dung đa ngôn ngữ',
+                'Nền tảng học Tư tưởng Hồ Chí Minh với AI assistant và nội dung đa ngôn ngữ',
             english:
-                'Scientific Socialism learning platform with AI assistant and multilingual content',
+                'Ho Chi Minh Ideology learning platform with AI assistant and multilingual content',
         },
         platformBadge: {
             vietnamese: 'Nền tảng AI học tập thế hệ mới',
@@ -89,9 +82,9 @@ export const translations = {
         },
         heroDescription: {
             vietnamese:
-                'Nền tảng học Chủ nghĩa xã hội khoa học với AI assistant, quiz tương tác và nội dung đa ngôn ngữ. Khám phá các quy luật khách quan của quá trình cách mạng xã hội chủ nghĩa.',
+                'Nền tảng học Tư tưởng Hồ Chí Minh với AI assistant, quiz tương tác và nội dung đa ngôn ngữ. Khám phá hệ thống quan điểm toàn diện về cách mạng Việt Nam và giá trị tư tưởng của Bác Hồ.',
             english:
-                'Scientific Socialism learning platform with AI assistant, interactive quizzes and multilingual content. Explore the objective laws of the socialist revolution process.',
+                "Ho Chi Minh Ideology learning platform with AI assistant, interactive quizzes and multilingual content. Explore comprehensive viewpoints on Vietnamese revolution and Uncle Ho's ideological values.",
         },
         exploreNow: {
             vietnamese: 'Ôn bài ngay',
@@ -157,25 +150,26 @@ export const translations = {
     // Chat bubble
     chat: {
         title: {
-            vietnamese: 'AI Chủ nghĩa xã hội khoa học',
-            english: 'AI Scientific Socialism Assistant',
+            vietnamese: 'AI Tư tưởng Hồ Chí Minh',
+            english: 'AI Ho Chi Minh Ideology Assistant',
         },
         welcome: {
             vietnamese:
-                'Xin chào! Tôi là AI assistant chuyên về Chủ nghĩa xã hội khoa học. Tôi có thể giúp bạn thảo luận về giáo trình CNXH khoa học, lý thuyết Mác-Lênin và kinh nghiệm của Việt Nam. Bạn có câu hỏi gì không?',
+                'Xin chào! Tôi là AI assistant chuyên về Tư tưởng Hồ Chí Minh. Tôi có thể giúp bạn thảo luận về tư tưởng, quan điểm của Chủ tịch Hồ Chí Minh về độc lập dân tộc, chủ nghĩa xã hội, đại đoàn kết và các giá trị văn hóa, đạo đức. Bạn có câu hỏi gì không?',
             english:
-                "Hello! I'm the AI assistant specializing in Scientific Socialism. I can help you discuss the Scientific Socialism curriculum, Marx-Lenin theory and Vietnam's experience. Do you have any questions?",
+                "Hello! I'm the AI assistant specializing in Ho Chi Minh Ideology. I can help you discuss President Ho Chi Minh's thoughts and viewpoints on national independence, socialism, great unity, and cultural-moral values. Do you have any questions?",
         },
         placeholder: {
             vietnamese:
-                'Hỏi về Chủ nghĩa xã hội khoa học, lý thuyết Mác-Lênin...',
-            english: 'Ask about Scientific Socialism, Marx-Lenin theory...',
+                'Hỏi về Tư tưởng Hồ Chí Minh, độc lập dân tộc, đại đoàn kết...',
+            english:
+                'Ask about Ho Chi Minh Ideology, national independence, great unity...',
         },
         response: {
             vietnamese:
-                'Đây là một câu hỏi thú vị về Chủ nghĩa xã hội khoa học! Tôi sẽ cần thêm thông tin để có thể trả lời một cách chính xác. Bạn có thể chia sẻ thêm về bối cảnh của câu hỏi không?',
+                'Đây là một câu hỏi thú vị về Tư tưởng Hồ Chí Minh! Tôi sẽ cần thêm thông tin để có thể trả lời một cách chính xác. Bạn có thể chia sẻ thêm về bối cảnh của câu hỏi không?',
             english:
-                "This is an interesting Scientific Socialism question! I'll need more information to answer accurately. Could you share more about the context of your question?",
+                "This is an interesting Ho Chi Minh Ideology question! I'll need more information to answer accurately. Could you share more about the context of your question?",
         },
     },
 
@@ -329,20 +323,20 @@ export const translations = {
             english: 'Interactive Quiz',
         },
         scientificSocialism: {
-            vietnamese: 'Chủ nghĩa xã hội khoa học',
-            english: 'Scientific Socialism',
+            vietnamese: 'Tư tưởng Hồ Chí Minh',
+            english: 'Ho Chi Minh Ideology',
         },
         selectChapterPrompt: {
             vietnamese:
-                'Hãy chọn một chương để bắt đầu luyện tập với các câu hỏi quiz tương tác',
+                'Hãy chọn một chương để bắt đầu luyện tập với các câu hỏi quiz tương tác về Tư tưởng Hồ Chí Minh',
             english:
-                'Select a chapter to start practicing with interactive quiz questions',
+                'Select a chapter to start practicing with interactive quiz questions about Ho Chi Minh Ideology',
         },
         chapter4Description: {
             vietnamese:
-                'Kiểm tra kiến thức về dân chủ và dân chủ xã hội chủ nghĩa thông qua các câu hỏi đa dạng',
+                'Kiểm tra kiến thức về đại đoàn kết dân tộc và các giá trị tư tưởng của Chủ tịch Hồ Chí Minh',
             english:
-                'Test your knowledge about democracy and democratic socialism through diverse questions',
+                "Test your knowledge about great national unity and President Ho Chi Minh's ideological values",
         },
         startQuiz: {
             vietnamese: 'Bắt đầu Quiz',
@@ -452,33 +446,64 @@ export const translations = {
             vietnamese: 'Lỗi gửi mail, thử lại!',
             english: 'Error sending email, please try again!',
         },
+        validation: {
+            nameRequired: {
+                vietnamese: 'Tên phải có ít nhất 2 ký tự',
+                english: 'Name must be at least 2 characters',
+            },
+            emailInvalid: {
+                vietnamese: 'Email không hợp lệ',
+                english: 'Invalid email address',
+            },
+            categoryRequired: {
+                vietnamese: 'Vui lòng chọn loại feedback',
+                english: 'Please select feedback type',
+            },
+            subjectRequired: {
+                vietnamese: 'Tiêu đề phải có ít nhất 5 ký tự',
+                english: 'Subject must be at least 5 characters',
+            },
+            messageRequired: {
+                vietnamese: 'Nội dung phải có ít nhất 10 ký tự',
+                english: 'Message must be at least 10 characters',
+            },
+            submitError: {
+                vietnamese: 'Có lỗi xảy ra. Vui lòng thử lại.',
+                english: 'An error occurred. Please try again.',
+            },
+            defaultError: {
+                vietnamese: 'Lỗi gửi feedback',
+                english: 'Error sending feedback',
+            },
+        },
     },
 
     // Metadata
     meta: {
         title: {
-            vietnamese: 'Trạm Lý Luận - Nền tảng học Chủ nghĩa xã hội khoa học',
-            english: 'Trạm Lý Luận - Scientific Socialism Learning Platform',
+            vietnamese: 'Học Viện Bác Hồ - Nền tảng học Tư tưởng Hồ Chí Minh',
+            english:
+                'Ho Chi Minh Academy - Ho Chi Minh Ideology Learning Platform',
         },
         description: {
             vietnamese:
-                'Nền tảng học Chủ nghĩa xã hội khoa học với nội dung đa ngôn ngữ, quiz tương tác và AI assistant. Khám phá các quy luật khách quan của quá trình cách mạng xã hội chủ nghĩa.',
+                'Nền tảng học Tư tưởng Hồ Chí Minh với nội dung đa ngôn ngữ, quiz tương tác và AI assistant. Khám phá hệ thống quan điểm toàn diện về cách mạng Việt Nam và giá trị tư tưởng của Bác Hồ.',
             english:
-                'Scientific Socialism learning platform with multilingual content, interactive quizzes and AI assistant. Explore the objective laws of the socialist revolution process.',
+                "Ho Chi Minh Ideology learning platform with multilingual content, interactive quizzes and AI assistant. Explore comprehensive viewpoints on Vietnamese revolution and Uncle Ho's ideological values.",
         },
     },
 
     // Videos
     videos: {
         title: {
-            vietnamese: 'Video Triết học',
-            english: 'Philosophy Videos',
+            vietnamese: 'Video Tư tưởng HCM',
+            english: 'HCM Ideology Videos',
         },
         description: {
             vietnamese:
-                'Khám phá triết học qua những video giáo dục chất lượng cao',
+                'Khám phá Tư tưởng Hồ Chí Minh qua những video giáo dục chất lượng cao',
             english:
-                'Explore philosophy through high-quality educational videos',
+                'Explore Ho Chi Minh Ideology through high-quality educational videos',
         },
         views: {
             vietnamese: 'lượt xem',
@@ -565,37 +590,23 @@ export const translations = {
             english:
                 "Analysis of Vietnam's remarkable economic development in the context of building socialism",
         },
-    },
-
-    // Admin
-    admin: {
-        blogs: {
-            title: {
-                vietnamese: 'Quản lý Blog',
-                english: 'Manage blogs',
-            },
-            createNew: {
-                vietnamese: 'Tạo bài viết mới',
-                english: 'Create new blog post',
-            },
-            list: {
-                vietnamese: 'Danh sách bài viết',
-                english: 'Blog posts list',
-            },
+        hoChiMinhUnity1Description: {
+            vietnamese:
+                'Tìm hiểu về tư tưởng đại đoàn kết toàn dân tộc của Chủ tịch Hồ Chí Minh - nền tảng sức mạnh của cách mạng Việt Nam',
+            english:
+                "Explore President Ho Chi Minh's thought on great national unity - the foundation of Vietnam's revolutionary strength",
         },
-        videos: {
-            title: {
-                vietnamese: 'Quản lý Video',
-                english: 'Manage Videos',
-            },
-            addNew: {
-                vietnamese: 'Thêm video mới',
-                english: 'Add new video',
-            },
-            list: {
-                vietnamese: 'Danh sách video',
-                english: 'Videos list',
-            },
+        hoChiMinhUnity2Description: {
+            vietnamese:
+                'Nghiên cứu sâu về quan điểm của Bác Hồ về đại đoàn kết dân tộc và ý nghĩa thực tiễn trong xây dựng đất nước',
+            english:
+                "In-depth study of Uncle Ho's views on great national unity and its practical significance in nation building",
+        },
+        hoChiMinhUnity3Description: {
+            vietnamese:
+                'Phim tài liệu về đại đoàn kết dân tộc - nguồn sức mạnh vô tận của dân tộc Việt Nam qua các thời kỳ lịch sử',
+            english:
+                'Documentary about great national unity - the endless source of strength of the Vietnamese people throughout historical periods',
         },
     },
 
@@ -783,9 +794,9 @@ export const translations = {
         },
         description: {
             vietnamese:
-                'Khám phá Chủ nghĩa xã hội khoa học qua những bài viết chuyên sâu, quiz tương tác và AI assistant thông minh.',
+                'Khám phá Tư tưởng Hồ Chí Minh qua những bài viết chuyên sâu, quiz tương tác và AI assistant thông minh.',
             english:
-                'Explore Scientific Socialism through in-depth articles, interactive quizzes, and smart AI assistant.',
+                'Explore Ho Chi Minh Ideology through in-depth articles, interactive quizzes, and smart AI assistant.',
         },
         quiz: {
             vietnamese: 'Quiz Triết học',
@@ -828,8 +839,9 @@ export const translations = {
             english: 'Diverse interactive quizzes',
         },
         builtWith: {
-            vietnamese: 'Được xây dựng với ❤️ cho cộng đồng triết học',
-            english: 'Built with ❤️ for the philosophy community',
+            vietnamese:
+                'Được xây dựng với ❤️ cho cộng đồng nghiên cứu Tư tưởng HCM',
+            english: 'Built with ❤️ for the HCM Ideology research community',
         },
         features: {
             vietnamese: 'Tính năng',
@@ -845,9 +857,9 @@ export const translations = {
         },
         heroDescription: {
             vietnamese:
-                'Khám phá bộ sưu tập các bài viết triết học đa dạng và chuyên sâu',
+                'Khám phá bộ sưu tập các bài viết về Tư tưởng Hồ Chí Minh đa dạng và chuyên sâu',
             english:
-                'Explore our diverse and in-depth collection of philosophy articles',
+                'Explore our diverse and in-depth collection of Ho Chi Minh Ideology articles',
         },
         filterAndSearch: {
             vietnamese: 'Lọc và Tìm kiếm',
@@ -901,15 +913,102 @@ export const translations = {
         chapter4: {
             title: {
                 vietnamese:
-                    'Chủ nghĩa xã hội khoa học và con đường quá độ lên chủ nghĩa xã hội ở Việt Nam',
+                    'Đại đoàn kết dân tộc và đoàn kết quốc tế trong tư tưởng Hồ Chí Minh',
                 english:
-                    'Scientific Socialism and the Path of Transition to Socialism in Vietnam',
+                    "Great National Unity and International Solidarity in Ho Chi Minh's Thought",
             },
             subtitle: {
                 vietnamese:
-                    'Nghiên cứu lý luận và thực tiễn xây dựng chủ nghĩa xã hội',
-                english: 'Study of Theory and Practice of Building Socialism',
+                    'Nghiên cứu tư tưởng đoàn kết và giá trị nhân văn của Chủ tịch Hồ Chí Minh',
+                english:
+                    'Study of Unity Thought and Humanistic Values of President Ho Chi Minh',
             },
+        },
+    },
+
+    // Video Player
+    videoPlayer: {
+        like: {
+            vietnamese: 'Thích',
+            english: 'Like',
+        },
+        share: {
+            vietnamese: 'Chia sẻ',
+            english: 'Share',
+        },
+        watchOnYoutube: {
+            vietnamese: 'Xem trên YouTube',
+            english: 'Watch on YouTube',
+        },
+        description: {
+            vietnamese: 'Mô tả',
+            english: 'Description',
+        },
+        relatedVideos: {
+            vietnamese: 'Video liên quan',
+            english: 'Related Videos',
+        },
+        subscribe: {
+            vietnamese: 'Đăng ký theo dõi',
+            english: 'Subscribe',
+        },
+        channelDescription: {
+            vietnamese:
+                'Nền tảng học tập về Tư tưởng Hồ Chí Minh với nội dung chất lượng cao và phương pháp giảng dạy hiện đại.',
+            english:
+                'Learning platform for Ho Chi Minh Ideology with high-quality content and modern teaching methods.',
+        },
+        videoNotFound: {
+            vietnamese: 'Video không tìm thấy',
+            english: 'Video not found',
+        },
+        backToVideos: {
+            vietnamese: 'Quay lại danh sách video',
+            english: 'Back to video list',
+        },
+        dislike: {
+            vietnamese: 'Không thích',
+            english: 'Dislike',
+        },
+        save: {
+            vietnamese: 'Lưu',
+            english: 'Save',
+        },
+        saved: {
+            vietnamese: 'Đã lưu',
+            english: 'Saved',
+        },
+        comments: {
+            vietnamese: 'Bình luận',
+            english: 'Comments',
+        },
+        addComment: {
+            vietnamese: 'Thêm bình luận công khai...',
+            english: 'Add a public comment...',
+        },
+        commentButton: {
+            vietnamese: 'Bình luận',
+            english: 'Comment',
+        },
+        cancel: {
+            vietnamese: 'Hủy',
+            english: 'Cancel',
+        },
+        reply: {
+            vietnamese: 'Trả lời',
+            english: 'Reply',
+        },
+        replies: {
+            vietnamese: 'phản hồi',
+            english: 'replies',
+        },
+        show: {
+            vietnamese: 'Hiển thị',
+            english: 'Show',
+        },
+        hide: {
+            vietnamese: 'Ẩn',
+            english: 'Hide',
         },
     },
 

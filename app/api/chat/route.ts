@@ -1,10 +1,24 @@
-import { searchCurriculumContent } from '@/data/curriculum/raw-curriculum-content'
-import { geminiApiClient } from '@/services/GeminiApiClient'
+import { AIPersonalTutor } from '@/services/AIPersonalTutor'
 import { NextRequest, NextResponse } from 'next/server'
+
+let tutor: AIPersonalTutor | null = null
+
+function getTutor() {
+    if (!tutor) {
+        // Sử dụng server-side environment variable (không có NEXT_PUBLIC_)
+        const apiKey =
+            process.env.OPENAI_API_KEY || process.env.NEXT_PUBLIC_OPENAI_API_KEY
+        if (!apiKey) {
+            throw new Error('OpenAI API key not found in environment variables')
+        }
+        tutor = new AIPersonalTutor(apiKey)
+    }
+    return tutor
+}
 
 export async function POST(request: NextRequest) {
     try {
-        const { message, searchQuery } = await request.json()
+        const { message, userId = 'anonymous', progress } = await request.json()
 
         if (!message) {
             return NextResponse.json(
@@ -13,30 +27,16 @@ export async function POST(request: NextRequest) {
             )
         }
 
-        // Nếu có searchQuery, tìm kiếm nội dung liên quan trước
-        let relevantContent = ''
-        if (searchQuery) {
-            const searchResults = searchCurriculumContent(searchQuery)
-            if (searchResults.length > 0) {
-                relevantContent = searchResults
-                    .map((section) => `${section.title}:\n${section.content}`)
-                    .join('\n\n')
-            }
-        }
-
-        // Tạo prompt với nội dung liên quan (nếu có)
-        const enhancedMessage = relevantContent
-            ? `Dựa trên nội dung giáo trình sau:\n\n${relevantContent}\n\nCâu hỏi: ${message}`
-            : message
-
-        // Gọi Gemini API thông qua client
-        const response = await geminiApiClient.generateContent(enhancedMessage)
+        const personalTutor = getTutor()
+        const response = await personalTutor.chatWithTutor(
+            userId,
+            message,
+            progress
+        )
 
         return NextResponse.json({
             response,
-            relevantSections: searchQuery
-                ? searchCurriculumContent(searchQuery).length
-                : 0,
+            userId,
         })
     } catch (error: any) {
         console.error('Chat API Error:', error)

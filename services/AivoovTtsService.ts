@@ -5,7 +5,7 @@ import axios from 'axios'
 // 🎛️ CONFIGURATION - Easy to modify for testing
 // ========================================
 const AIVOOV_API_URL = 'https://aivoov.com/api/v8/create'
-const AIVOOV_API_KEY = '9d8e4fc8-95a6-47c6-8793-2a26b6537bff'
+const AIVOOV_API_KEY = process.env.NEXT_PUBLIC_AIVOOV_API_KEY || ''
 const AIVOOV_VOICE_ID = 'f2f08621-cc68-40b8-a19f-1ca21d530893'
 const TTS_WORD_LIMIT = 150 // Maximum words to send to TTS service
 const CACHE_DURATION = 24 * 60 * 60 * 1000 // 24 hours in milliseconds

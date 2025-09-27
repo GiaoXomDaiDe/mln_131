@@ -4,8 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useLanguage } from '@/contexts/language-context'
 import { Edit, Eye, Trash2 } from 'lucide-react'
 
-// Hardcode blog list for admin
-const adminblogs = [
+// Blog list
+const blogs = [
     {
         id: 1,
         title: 'Triết học về ý nghĩa cuộc sống',
@@ -53,7 +53,7 @@ export function BlogList() {
 
     return (
         <div className="space-y-4">
-            {adminblogs.map((blog) => {
+            {blogs.map((blog) => {
                 const languageBadge = getLanguageBadge(blog.language)
                 const statusBadge = getStatusBadge(blog.status)
 
