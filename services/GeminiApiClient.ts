@@ -62,7 +62,7 @@ class GeminiApiClient {
                     parts: [
                         {
                             text: `
-Bạn là AI Assistant chuyên về Chủ nghĩa xã hội khoa học (Scientific Socialism) của nền tảng học tập "Trạm Triết".
+Bạn là AI Assistant chuyên về Chủ nghĩa xã hội khoa học (Scientific Socialism) của nền tảng học tập "Trạm Lý Luận".
 
 NHIỆM VỤ CỦA BẠN:
 - Trả lời câu hỏi liên quan đến Chủ nghĩa xã hội khoa học
@@ -315,7 +315,7 @@ VÍ DỤ CHỦ ĐỀ PHÙ HỢP:
             lowercasePrompt.includes('xin chào') ||
             lowercasePrompt.includes('chào')
         ) {
-            return `Xin chào! Tôi là AI Assistant của Trạm Triết, chuyên hỗ trợ học tập về Chủ nghĩa xã hội khoa học. 
+            return `Xin chào! Tôi là AI Assistant của Trạm Lý Luận, chuyên hỗ trợ học tập về Chủ nghĩa xã hội khoa học. 
 
 Tôi có thể giúp bạn:
 • Giải thích các khái niệm trong giáo trình CNXH khoa học
@@ -354,7 +354,7 @@ Bạn có muốn thảo luận về:
         }
 
         // Phản hồi chung cho chào hỏi
-        return `Chào bạn! Tôi là AI Assistant của Trạm Triết. Tôi có thể hỗ trợ bạn học tập về Chủ nghĩa xã hội khoa học và các chủ đề trong giáo trình. Bạn muốn tìm hiểu về điều gì?`
+        return `Chào bạn! Tôi là AI Assistant của Trạm Lý Luận. Tôi có thể hỗ trợ bạn học tập về Chủ nghĩa xã hội khoa học và các chủ đề trong giáo trình. Bạn muốn tìm hiểu về điều gì?`
     }
 
     /**
