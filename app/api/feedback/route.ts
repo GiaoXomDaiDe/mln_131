@@ -29,9 +29,9 @@ export async function POST(request: NextRequest) {
         const { data, error } = await resend.emails.send({
             from:
                 process.env.FEEDBACK_EMAIL_FROM ||
-                'Học Viện Bác Hồ <feedback@your-domain.com>',
+                'Trạm Lý Luận <feedback@your-domain.com>',
             to: [process.env.FEEDBACK_EMAIL_TO || 'johnweak003@gmail.com'],
-            subject: `[Học Viện Bác Hồ] ${subject}`,
+            subject: `[Trạm Lý Luận] ${subject}`,
             react: FeedbackEmail({ name, email, category, subject, message }),
             replyTo: email, // Cho phép reply trực tiếp về email người gửi
         })

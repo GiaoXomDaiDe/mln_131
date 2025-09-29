@@ -14,6 +14,9 @@ import { useLanguage } from '@/contexts/language-context'
 import { FormattedMessage } from '@/components/ui/formatted-message'
 import { TypingIndicator } from '@/components/ui/typing-indicator'
 
+// Import API client
+import { geminiApiClient } from '@/services/GeminiApiClient'
+
 interface Message {
     id: number
     text: string
@@ -35,7 +38,8 @@ export function ChatBubble() {
     useEffect(() => {
         if (isOpen && messages.length === 0) {
             const welcomeMessageText =
-                '🎓 Xin chào! Tôi là AI Gia Sư chuyên về Tư tưởng Hồ Chí Minh.\n\n📚 Tôi có thể giúp bạn:\n• Tìm hiểu về tư tưởng độc lập dân tộc\n• Học về đại đoàn kết toàn dân tộc\n• Hiểu về chủ nghĩa xã hội\n• Khám phá giá trị văn hóa, đạo đức\n\n🤔 Bạn muốn thảo luận về chủ đề nào trong Tư tưởng Hồ Chí Minh?'
+                'Xin chào! Tôi là AI Assistant chuyên về Chủ nghĩa xã hội khoa học của Trạm Lý Luận. Tôi chỉ có thể trả lời các câu hỏi liên quan đến giáo trình CNXH khoa học và sẽ từ chối những câu hỏi ngoài lĩnh vực này. Bạn muốn tìm hiểu về chương nào trong giáo trình?'
+            geminiApiClient.resetChatHistory()
             setMessages([
                 {
                     id: 1,
@@ -67,55 +71,11 @@ export function ChatBubble() {
         setIsBotReplying(true)
 
         try {
-            // Gọi API route để xử lý chat
-            const response = await fetch('/api/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    message: trimmedInput,
-                    userId: 'anonymous',
-                    progress: {
-                        completedLessons:
-                            messages.length > 0
-                                ? ['Tư tưởng Hồ Chí Minh cơ bản']
-                                : [],
-                        weakAreas:
-                            messages.length < 3 ? ['Đại đoàn kết dân tộc'] : [],
-                        strongAreas:
-                            messages.length > 5
-                                ? ['Độc lập dân tộc', 'Chủ nghĩa xã hội']
-                                : ['Độc lập dân tộc'],
-                        studyTime: Math.floor(messages.length * 2.5),
-                        currentStreak: Math.floor(messages.length / 4),
-                        lastActivity: new Date().toISOString(),
-                        knowledgeAreas: {
-                            'tu-tuong-hcm': Math.min(
-                                85 + messages.length * 2,
-                                100
-                            ),
-                            'doc-lap-dan-toc': Math.min(
-                                78 + messages.length * 1.5,
-                                100
-                            ),
-                            'dai-doan-ket': Math.min(
-                                82 + messages.length * 1.8,
-                                100
-                            ),
-                        },
-                    },
-                }),
-            })
+            const botResponseText =
+                await geminiApiClient.generateContent(trimmedInput)
 
-            if (!response.ok) {
-                throw new Error(`Lỗi API: ${response.status}`)
-            }
-
-            const data = await response.json()
-            const botResponseText = data.response
-
-            console.log('AI Response:', botResponseText)
+            // 👇 Dòng code được thêm vào để log response từ API
+            console.log('API Response from Gemini:', botResponseText)
 
             const botMessagePlaceholder: Message = {
                 id: Date.now() + 1,
@@ -171,30 +131,19 @@ export function ChatBubble() {
         <>
             <Button
                 onClick={() => setIsOpen(true)}
-                className="fixed bottom-6 right-6 h-16 w-16 rounded-2xl shadow-lg hover:shadow-xl z-50 bg-slate-800 hover:bg-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600 border-2 border-white dark:border-slate-300 transform hover:scale-105 transition-all duration-200"
+                className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg z-50"
                 size="icon"
             >
-                <MessageCircle className="h-7 w-7 text-white" />
-                <div className="absolute -top-1 -right-1 h-4 w-4 bg-red-500 rounded-full animate-pulse" />
+                <MessageCircle className="h-6 w-6" />
             </Button>
 
             {isOpen && (
-                <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-                    <Card className="w-full max-w-4xl h-[80vh] flex flex-col bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-2xl rounded-2xl overflow-hidden">
-                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 bg-slate-50 dark:bg-slate-800 border-b border-slate-100 dark:border-slate-700">
-                            <div className="flex items-center space-x-3">
-                                <div className="h-10 w-10 rounded-xl bg-slate-800 dark:bg-slate-600 flex items-center justify-center shadow-sm border-2 border-slate-200 dark:border-slate-400">
-                                    <MessageCircle className="h-5 w-5 text-white" />
-                                </div>
-                                <div>
-                                    <CardTitle className="text-xl font-semibold text-gray-900 dark:text-white">
-                                        AI Gia Sư Tư Tưởng HCM
-                                    </CardTitle>
-                                    <p className="text-sm text-gray-700 dark:text-gray-200">
-                                        Chuyên gia về Tư tưởng Hồ Chí Minh
-                                    </p>
-                                </div>
-                            </div>
+                <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-6">
+                    <Card className="w-full max-w-2xl h-[70vh] flex flex-col">
+                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                            <CardTitle className="text-lg">
+                                {t ? t('chat.title') : 'Trạm Lý Luận'}
+                            </CardTitle>
                             <Button
                                 variant="ghost"
                                 size="icon"
@@ -216,10 +165,10 @@ export function ChatBubble() {
                                             }`}
                                         >
                                             <div
-                                                className={`max-w-[85%] rounded-2xl p-4 text-sm whitespace-pre-wrap break-words shadow-sm ${
+                                                className={`max-w-[80%] rounded-lg p-3 text-sm whitespace-pre-wrap break-words ${
                                                     message.isUser
-                                                        ? 'bg-slate-800 text-white ml-auto'
-                                                        : 'bg-white dark:bg-slate-700 text-gray-900 dark:text-white border border-gray-200 dark:border-slate-600'
+                                                        ? 'bg-primary text-primary-foreground'
+                                                        : 'bg-muted'
                                                 }`}
                                             >
                                                 {message.isUser ? (
@@ -242,26 +191,29 @@ export function ChatBubble() {
                                     <div ref={messagesEndRef} />
                                 </div>
                             </ScrollArea>
-                            <div className="p-4 border-t border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 flex gap-3">
+                            <div className="p-4 border-t flex gap-2">
                                 <Input
                                     value={inputValue}
                                     onChange={(e) =>
                                         setInputValue(e.target.value)
                                     }
                                     onKeyPress={handleKeyPress}
-                                    placeholder="Hỏi về Tư tưởng Hồ Chí Minh, độc lập dân tộc, đại đoàn kết..."
-                                    className="flex-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:border-slate-400 dark:focus:border-slate-500 focus:ring-2 focus:ring-slate-200 dark:focus:ring-slate-700 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+                                    placeholder={
+                                        t
+                                            ? t('chat.placeholder')
+                                            : 'Trò chuyện cùng Trạm Lý Luận...'
+                                    }
+                                    className="flex-1"
                                     disabled={isBotReplying}
                                 />
                                 <Button
                                     onClick={handleSendMessage}
-                                    className="h-12 w-12 rounded-xl bg-slate-800 hover:bg-slate-900 dark:bg-slate-600 dark:hover:bg-slate-500 shadow-sm hover:shadow-md transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:transform-none"
                                     size="icon"
                                     disabled={
                                         isBotReplying || !inputValue.trim()
                                     }
                                 >
-                                    <Send className="h-5 w-5 text-white" />
+                                    <Send className="h-4 w-4" />
                                 </Button>
                             </div>
                         </CardContent>

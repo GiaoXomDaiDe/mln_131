@@ -23,11 +23,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     const [isHydrated, setIsHydrated] = useState(false)
 
     const getTranslation = (path: string): string => {
-        // Safety check for null/undefined path
-        if (!path || typeof path !== 'string') {
-            return path || ''
-        }
-
         const keys = path.split('.')
         let value: any = translations
 

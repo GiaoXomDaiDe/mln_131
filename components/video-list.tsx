@@ -4,37 +4,34 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useLanguage } from '@/contexts/language-context'
 import { Edit, Eye, Play, Trash2 } from 'lucide-react'
 
-// Video list
-const videos = [
+// Hardcode video list for admin
+const adminVideos = [
     {
         id: 1,
-        title: 'Chủ tịch Hồ Chí Minh và tư tưởng đại đoàn kết toàn dân tộc',
+        title: 'Triết học Phương Đông vs Phương Tây',
         type: 'youtube',
-        url: 'https://www.youtube.com/watch?v=AtbQeFo0c0U',
-        duration: '25:45',
-        views: 1520,
-        date: '2025-09-26',
+        duration: '15:30',
+        views: 1250,
+        date: '2024-01-15',
         status: 'published',
     },
     {
         id: 2,
-        title: 'Tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc',
+        title: 'Stoicism in Modern Life',
         type: 'youtube',
-        url: 'https://www.youtube.com/watch?v=euqtheBsAYo',
-        duration: '32:15',
-        views: 2340,
-        date: '2025-09-25',
+        duration: '12:45',
+        views: 890,
+        date: '2024-01-10',
         status: 'published',
     },
     {
         id: 3,
-        title: 'Phim tài liệu Đại đoàn kết - Cội nguồn sức mạnh dân tộc (Video giảng) Nguồn: Tạp chí Mặt trận',
-        type: 'youtube',
-        url: 'https://www.youtube.com/watch?v=Lkf7huMlpJI',
-        duration: '45:20',
-        views: 3180,
-        date: '2025-09-24',
-        status: 'published',
+        title: '禅の心と現代ストレス',
+        type: 'local',
+        duration: '18:20',
+        views: 2100,
+        date: '2024-01-05',
+        status: 'draft',
     },
 ]
 
@@ -55,7 +52,7 @@ export function VideoList() {
 
     return (
         <div className="space-y-4">
-            {videos.map((video) => {
+            {adminVideos.map((video) => {
                 const typeBadge = getTypeBadge(video.type)
                 const statusBadge = getStatusBadge(video.status)
 

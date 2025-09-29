@@ -2,7 +2,6 @@
 
 import { VideoCard } from '@/components/video-card'
 import { useLanguage } from '@/contexts/language-context'
-import YouTubeApiService from '@/services/YouTubeApiService'
 import { useEffect, useState } from 'react'
 
 // Define a type for the video data structure for better type safety
@@ -27,154 +26,77 @@ export default function VideosPage() {
         const videoInfoList = [
             {
                 id: 1,
-                url: 'https://www.youtube.com/watch?v=AtbQeFo0c0U',
-                descriptionKey: 'videos.hoChiMinhUnity1Description',
+                url: 'https://www.youtube.com/watch?v=YMdUVldvp7Q',
+                title: 'TTHCM về thời kỳ quá độ lên chủ nghĩa xã hội',
+                descriptionKey: 'videos.sampleVideo1Description',
+                duration: '25:42',
+                uploadDate: '2024-01-15',
+                views: 1250,
             },
             {
                 id: 2,
-                url: 'https://www.youtube.com/watch?v=euqtheBsAYo',
-                descriptionKey: 'videos.hoChiMinhUnity2Description',
+                url: 'https://www.youtube.com/watch?v=53vmQNVBm0w',
+                title: 'CAPITALISM, SOCIALISM & COMMUNISM EXPLAINED SIMPLY',
+                descriptionKey: 'videos.sampleVideo2Description',
+                duration: '18:35',
+                uploadDate: '2024-01-10',
+                views: 890,
             },
             {
                 id: 3,
-                url: 'https://www.youtube.com/watch?v=Lkf7huMlpJI',
-                descriptionKey: 'videos.hoChiMinhUnity3Description',
+                url: 'https://www.youtube.com/watch?v=B8PJzEqEVWU',
+                title: 'How Vietnam Became an Economic Superstar Under Communist Rule',
+                descriptionKey: 'videos.sampleVideo3Description',
+                duration: '22:18',
+                uploadDate: '2024-01-05',
+                views: 2100,
             },
         ]
 
         const fetchVideoDetails = async () => {
             setIsLoading(true)
             try {
-                console.log(
-                    '[Videos Page] Fetching video details using YouTube API...'
-                )
-
-                // Get YouTube API service instance
-                const youtubeService = YouTubeApiService.getInstance()
-
-                // Test connection first
-                const connectionTest = await youtubeService.testConnection()
-                if (!connectionTest) {
-                    console.warn(
-                        '[Videos Page] YouTube API connection test failed, falling back to NoEmbed'
-                    )
-                    throw new Error('YouTube API connection failed')
-                }
-
-                // Extract URLs for batch processing
-                const urls = videoInfoList.map((info) => info.url)
-
-                // Fetch all video details in batch
-                const youtubeVideos =
-                    await youtubeService.getMultipleVideosInfo(urls)
-
-                // Combine YouTube API data with manual descriptions
-                const detailedVideos = videoInfoList.map((videoInfo, index) => {
-                    const youtubeData = youtubeVideos[index]
-
-                    if (youtubeData) {
-                        return {
-                            id: videoInfo.id,
-                            title: youtubeData.title,
-                            description: t(videoInfo.descriptionKey as any), // Use manual description
-                            thumbnail: youtubeData.thumbnail,
-                            duration: youtubeData.duration,
-                            youtubeUrl: youtubeData.youtubeUrl,
-                            uploadDate: youtubeData.publishedAt.split('T')[0], // Convert ISO date to YYYY-MM-DD
-                            views: youtubeData.viewCount,
-                        }
-                    } else {
-                        // Fallback data if YouTube API fails for this video
-                        console.warn(
-                            `[Videos Page] Failed to fetch YouTube data for video ${videoInfo.id}`
+                // Create an array of promises to fetch details for all videos concurrently
+                const videoDetailsPromises = videoInfoList.map(
+                    async (videoInfo) => {
+                        // Use a public oEmbed service (noembed.com) to get video metadata without CORS issues or API keys
+                        const response = await fetch(
+                            `https://noembed.com/embed?url=${encodeURIComponent(
+                                videoInfo.url
+                            )}`
                         )
+                        if (!response.ok) {
+                            throw new Error(
+                                `Failed to fetch data for ${videoInfo.url}`
+                            )
+                        }
+                        const data = await response.json()
+
+                        // Combine fetched data with manual data
                         return {
                             id: videoInfo.id,
-                            title: `Video ${videoInfo.id}`,
-                            description: t(videoInfo.descriptionKey as any),
-                            thumbnail: '/placeholder.svg?height=200&width=350',
-                            duration: 'Unknown',
+                            title:
+                                videoInfo.title ||
+                                data.title ||
+                                'Untitled Video', // Use manual title first, then fetched title
+                            description: t(videoInfo.descriptionKey as any), // Manual description from translations
+                            thumbnail:
+                                data.thumbnail_url ||
+                                '/placeholder.svg?height=200&width=350', // Fetched thumbnail
+                            duration: videoInfo.duration,
                             youtubeUrl: videoInfo.url,
-                            uploadDate: '2025-09-25',
-                            views: 0,
+                            uploadDate: videoInfo.uploadDate,
+                            views: videoInfo.views,
                         }
                     }
-                })
+                )
 
+                // Wait for all fetch requests to complete
+                const detailedVideos = await Promise.all(videoDetailsPromises)
                 setVideos(detailedVideos as VideoData[])
-                console.log(
-                    '[Videos Page] Successfully loaded',
-                    detailedVideos.length,
-                    'videos'
-                )
             } catch (error) {
-                console.error(
-                    '[Videos Page] Failed to fetch video details from YouTube API:',
-                    error
-                )
-
-                // Fallback to NoEmbed service if YouTube API fails
-                console.log('[Videos Page] Falling back to NoEmbed service...')
-
-                try {
-                    const videoDetailsPromises = videoInfoList.map(
-                        async (videoInfo) => {
-                            const response = await fetch(
-                                `https://noembed.com/embed?url=${encodeURIComponent(
-                                    videoInfo.url
-                                )}`
-                            )
-                            if (!response.ok) {
-                                throw new Error(
-                                    `Failed to fetch data for ${videoInfo.url}`
-                                )
-                            }
-                            const data = await response.json()
-
-                            return {
-                                id: videoInfo.id,
-                                title: data.title || `Video ${videoInfo.id}`,
-                                description: t(videoInfo.descriptionKey as any),
-                                thumbnail:
-                                    data.thumbnail_url ||
-                                    '/placeholder.svg?height=200&width=350',
-                                duration: 'Unknown',
-                                youtubeUrl: videoInfo.url,
-                                uploadDate: '2025-09-25',
-                                views: 0,
-                            }
-                        }
-                    )
-
-                    const fallbackVideos =
-                        await Promise.all(videoDetailsPromises)
-                    setVideos(fallbackVideos as VideoData[])
-                    console.log(
-                        '[Videos Page] Fallback: Successfully loaded',
-                        fallbackVideos.length,
-                        'videos using NoEmbed'
-                    )
-                } catch (fallbackError) {
-                    console.error(
-                        '[Videos Page] Fallback also failed:',
-                        fallbackError
-                    )
-
-                    // Last resort: static data
-                    const staticVideos = videoInfoList.map((videoInfo) => ({
-                        id: videoInfo.id,
-                        title: `Video ${videoInfo.id}`,
-                        description: t(videoInfo.descriptionKey as any),
-                        thumbnail: '/placeholder.svg?height=200&width=350',
-                        duration: 'Unknown',
-                        youtubeUrl: videoInfo.url,
-                        uploadDate: '2025-09-25',
-                        views: 0,
-                    }))
-
-                    setVideos(staticVideos as VideoData[])
-                    console.log('[Videos Page] Using static fallback data')
-                }
+                console.error('Failed to fetch video details:', error)
+                // You could set an error state here to show a message to the user
             } finally {
                 setIsLoading(false)
             }

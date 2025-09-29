@@ -1,106 +1,53 @@
 export const philosophyBlogs = {
-    '5.1': {
+    '4.1': {
         title: {
-            vietnamese:
-                'Tư tưởng Hồ Chí Minh về Đại đoàn kết toàn dân tộc và đoàn kết quốc tế',
-            english:
-                'Ho Chi Minh’s Thought on National Unity and International Solidarity',
+            vietnamese: 'Dân chủ và dân chủ xã hội chủ nghĩa',
+            english: 'Democracy and Democratic Socialism',
         },
-        sections: ['5.1.1', '5.1.2', '5.1.3', '5.1.4', '5.1.5'],
-    },
-    '5.2': {
-        title: {
-            vietnamese:
-                'Đại đoàn kết dân tộc – chiến lược lâu dài hay chỉ là sách lược nhất thời?',
-            english:
-                'National Great Unity – Long-term Strategy or Temporary Tactic?',
-        },
-        sections: ['5.2.1', '5.2.2', '5.2.3', '5.2.4', '5.2.5', '5.2.6'],
+        sections: ['4.1.1', '4.1.2', '4.1.3', '4.1.4', '4.1.5'],
     },
 } as const
 
 export const philosophySections = {
-    '5.1.1': {
+    '4.1.1': {
         title: {
-            vietnamese: 'Vai trò của đại đoàn kết toàn dân tộc',
-            english: 'The Role of National Unity',
+            vietnamese: 'Khái niệm về chủ nghĩa xã hội và quá độ',
+            english: 'Concept of Socialism and Transition',
         },
-        blog: '5.1',
+        blog: '4.1',
     },
-    '5.1.2': {
+    '4.1.2': {
         title: {
-            vietnamese: 'Lực lượng của khối đại đoàn kết toàn dân tộc',
-            english: 'Forces of the National Unity Bloc',
-        },
-        blog: '5.1',
-    },
-    '5.1.3': {
-        title: {
-            vietnamese: 'Điều kiện để xây dựng khối đại đoàn kết toàn dân tộc',
-            english: 'Conditions for Building the National Unity Bloc',
-        },
-        blog: '5.1',
-    },
-    '5.1.4': {
-        title: {
-            vietnamese:
-                'Hình thức, nguyên tắc tổ chức của khối đại đoàn kết toàn dân tộc – Mặt trận dân tộc thống nhất',
+            vietnamese: 'Đặc điểm thời kỳ quá độ / VN khác như thế nào?',
             english:
-                'Forms and Principles of Organization of the National Unity Bloc – The United National Front',
+                'Characteristics of the Transitional Period / How is Vietnam Different?',
         },
-        blog: '5.1',
+        blog: '4.1',
     },
-    '5.1.5': {
+    '4.1.3': {
         title: {
-            vietnamese: 'Phương thức xây dựng khối đại đoàn kết dân tộc',
-            english: 'Methods of Building the National Unity Bloc',
+            vietnamese: 'Các giai đoạn quá độ ở Việt Nam/Thế giới',
+            english: 'Transitional Stages in Vietnam/World',
         },
-        blog: '5.1',
+        blog: '4.1',
     },
-    '5.2.1': {
+    '4.1.4': {
         title: {
-            vietnamese: 'Đại đoàn kết dân tộc – Đặt vấn đề và cơ sở hình thành',
+            vietnamese:
+                'Thành tựu và thách thức của VN kể từ thời kỳ quá độ XHCN',
             english:
-                'National Great Unity – Problem Statement and Formation Basis',
+                'Achievements and Challenges of Vietnam since the Transitional Period to Socialism',
         },
-        blog: '5.2',
+        blog: '4.1',
     },
-    '5.2.2': {
-        title: {
-            vietnamese: 'Nội dung cơ bản tư tưởng đại đoàn kết',
-            english: 'Basic Content of Great Unity Thought',
-        },
-        blog: '5.2',
-    },
-    '5.2.3': {
+    '4.1.5': {
         title: {
             vietnamese:
-                'Đại đoàn kết là đường lối chiến lược, không phải sách lược nhất thời',
-            english: 'Great Unity as Strategic Line, Not Temporary Tactic',
+                'Liên hệ thực tiễn tại VN: Giảm nghèo đa chiều, Chuyển đổi số dịch vụ công, Năng lượng tái tạo & tăng trưởng xanh',
+            english:
+                'Practical Application in Vietnam: Multidimensional Poverty Reduction, Digital Transformation of Public Services, Renewable Energy & Green Growth',
         },
-        blog: '5.2',
-    },
-    '5.2.4': {
-        title: {
-            vietnamese: 'Ý nghĩa chiến lược quyết định thắng lợi cách mạng',
-            english: 'Strategic Significance Determining Revolutionary Victory',
-        },
-        blog: '5.2',
-    },
-    '5.2.5': {
-        title: {
-            vietnamese:
-                'Dẫn chứng từ bối cảnh xã hội, kinh tế – chính trị hiện nay',
-            english: 'Evidence from Current Social, Economic-Political Context',
-        },
-        blog: '5.2',
-    },
-    '5.2.6': {
-        title: {
-            vietnamese: 'Kết luận về tính chiến lược của đại đoàn kết dân tộc',
-            english: 'Conclusion on Strategic Nature of National Great Unity',
-        },
-        blog: '5.2',
+        blog: '4.1',
     },
 } as const
 

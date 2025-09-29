@@ -8,31 +8,22 @@ import { Textarea } from '@/components/ui/textarea'
 import { useLanguage } from '@/contexts/language-context'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AlertCircle, CheckCircle, Send } from 'lucide-react'
-import { useEffect, useMemo, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-// Schema validation with dynamic translations
-const createFeedbackSchema = (t: any) =>
-    z.object({
-        name: z.string().min(2, t('feedback.validation.nameRequired')),
-        email: z.string().email(t('feedback.validation.emailInvalid')),
-        category: z.enum(['bug', 'feature', 'content', 'general'], {
-            errorMap: () => ({
-                message: t('feedback.validation.categoryRequired'),
-            }),
-        }),
-        subject: z.string().min(5, t('feedback.validation.subjectRequired')),
-        message: z.string().min(10, t('feedback.validation.messageRequired')),
-    })
+// Schema validation
+const feedbackSchema = z.object({
+    name: z.string().min(2, 'Tên phải có ít nhất 2 ký tự'),
+    email: z.string().email('Email không hợp lệ'),
+    category: z.enum(['bug', 'feature', 'content', 'general'], {
+        errorMap: () => ({ message: 'Vui lòng chọn loại feedback' }),
+    }),
+    subject: z.string().min(5, 'Tiêu đề phải có ít nhất 5 ký tự'),
+    message: z.string().min(10, 'Nội dung phải có ít nhất 10 ký tự'),
+})
 
-type FeedbackFormData = {
-    name: string
-    email: string
-    category: 'bug' | 'feature' | 'content' | 'general'
-    subject: string
-    message: string
-}
+type FeedbackFormData = z.infer<typeof feedbackSchema>
 
 export function FeedbackForm() {
     const { t } = useLanguage()
@@ -40,18 +31,11 @@ export function FeedbackForm() {
     const [isLoading, setIsLoading] = useState(false)
     const [submitError, setSubmitError] = useState<string | null>(null)
 
-    // Create schema with current language translations
-    const feedbackSchema = useMemo(() => createFeedbackSchema(t), [t])
-
     const {
         register,
         handleSubmit,
         formState: { errors },
         reset,
-        trigger,
-        clearErrors,
-        setError,
-        getValues,
     } = useForm<FeedbackFormData>({
         resolver: zodResolver(feedbackSchema),
         defaultValues: {
@@ -62,30 +46,6 @@ export function FeedbackForm() {
             message: '',
         },
     })
-
-    // Track if we have errors and current language
-    const [lastLanguage, setLastLanguage] = useState<any>(null)
-    const hasErrors = Object.keys(errors).length > 0
-
-    // Re-validate when language changes to update error messages
-    useEffect(() => {
-        // Initialize lastLanguage on first render
-        if (lastLanguage === null) {
-            setLastLanguage(t)
-            return
-        }
-
-        if (lastLanguage !== t && hasErrors) {
-            // Language changed and we have errors to update
-            setTimeout(() => {
-                trigger() // Re-trigger validation with new language
-            }, 0)
-            setLastLanguage(t)
-        } else if (lastLanguage !== t) {
-            // Just update the language tracker
-            setLastLanguage(t)
-        }
-    }, [t, hasErrors, lastLanguage, trigger])
 
     const onSubmit = async (data: FeedbackFormData) => {
         setIsLoading(true)
@@ -103,9 +63,7 @@ export function FeedbackForm() {
             const result = await response.json()
 
             if (!response.ok) {
-                throw new Error(
-                    result.error || t('feedback.validation.defaultError')
-                )
+                throw new Error(result.error || 'Lỗi gửi feedback')
             }
 
             setIsSubmitted(true)
@@ -115,7 +73,7 @@ export function FeedbackForm() {
             setSubmitError(
                 error instanceof Error
                     ? error.message
-                    : t('feedback.validation.submitError')
+                    : 'Có lỗi xảy ra. Vui lòng thử lại.'
             )
         } finally {
             setIsLoading(false)
